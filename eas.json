@@ -4,7 +4,22 @@
     "appVersionSource": "remote"
   },
   "build": {
+    "production": {
+      "android": {
+        "image": "latest"
+      },
+      "ios": {
+        "image": "latest"
+      }
+    }
+  },
     "development": {
+      "android": {
+        "image": "latest"
+      },
+      "ios": {
+        "image": "latest"
+      },
       "developmentClient": true,
       "distribution": "internal"
     },
