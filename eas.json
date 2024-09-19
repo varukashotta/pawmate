@@ -5,14 +5,14 @@
   },
   "build": {
     "production": {
+      "autoIncrement": true,
       "android": {
         "image": "latest"
       },
       "ios": {
         "image": "latest"
       }
-    }
-  },
+    },
     "development": {
       "android": {
         "image": "latest"
@@ -25,9 +25,6 @@
     },
     "preview": {
       "distribution": "internal"
-    },
-    "production": {
-      "autoIncrement": true
     }
   },
   "submit": {
