@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.varuka.pawmate"
     },
     "android": {
       "adaptiveIcon": {
@@ -31,6 +32,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f3599bd7-b086-48ff-9cd3-ea7b34015d2e"
+      }
+    },
+    "owner": "varuka"
   }
 }
