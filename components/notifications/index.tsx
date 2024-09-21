@@ -12,13 +12,13 @@ const Notification: FC<INotification> = ({setShowBookingAlert}) => {
     return (<View style={styles.bookingAlert}>
             <View style={styles.bookingAlertTextContainer}>
                 <ThemedText style={styles.bookingAlertText}>
-                    0 upcoming bookings -
+                    No Upcoming Bookings -
                 </ThemedText>
                 <TouchableOpacity onPress={() => {/* Navigate to booking screen */
                 }}>
                     <ThemedText style={[styles.bookingAlertText, styles.bookingAlertLink]}>
                         {' '}
-                        book now
+                        Book Now
                     </ThemedText>
                 </TouchableOpacity>
             </View>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#800020', // Burgundy red
+        backgroundColor: '#ff385c', // Burgundy red
         padding: responsiveSize(8),
         borderRadius: 5,
         marginTop: responsiveSize(20),
