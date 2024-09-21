@@ -19,19 +19,46 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'library' : 'library-outline'} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="booking"
         options={{
-          title: 'Explore',
+          title: 'Bookings',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={color} />
           ),
         }}
       />
+        <Tabs.Screen
+            name="community"
+            options={{
+                title: 'Community',
+                tabBarIcon: ({ color, focused }) => (
+                    <TabBarIcon name={focused ? 'storefront' : 'storefront-outline'} color={color} />
+                ),
+            }}
+        />
+        <Tabs.Screen
+            name="pets"
+            options={{
+                title: 'My Pets',
+                tabBarIcon: ({ color, focused }) => (
+                    <TabBarIcon name={focused ? 'paw' : 'paw-outline'} color={color} />
+                ),
+            }}
+        />
+        <Tabs.Screen
+            name="settings"
+            options={{
+                title: 'Settings',
+                tabBarIcon: ({ color, focused }) => (
+                    <TabBarIcon name={focused ? 'options' : 'options-outline'} color={color} />
+                ),
+            }}
+        />
     </Tabs>
   );
 }
