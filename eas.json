@@ -28,6 +28,12 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "alkashotta@gmail.com",
+        "appleTeamId": "42Q9A3RF9V",
+        "ascAppId": "6698895045"
+      }
+    }
   }
 }

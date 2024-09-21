@@ -339,6 +339,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = pawmate/pawmate.entitlements;
 				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 42Q9A3RF9V;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -380,6 +381,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = pawmate/pawmate.entitlements;
 				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 42Q9A3RF9V;
 				INFOPLIST_FILE = pawmate/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PetSphere;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;

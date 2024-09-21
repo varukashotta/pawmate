@@ -59,6 +59,15 @@ export default function TabLayout() {
                 ),
             }}
         />
+        <Tabs.Screen
+            name="emergency"
+            options={{
+                title: 'Emergency',
+                tabBarIcon: ({ color, focused }) => (
+                    <TabBarIcon name={focused ? 'bulb' : 'bulb-outline'} color={color} />
+                ),
+            }}
+        />
     </Tabs>
   );
 }
