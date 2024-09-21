@@ -1,11 +1,19 @@
 import {StyleSheet, Text, type TextProps, View} from 'react-native';
 import {useThemeColor} from '@/hooks/useThemeColor';
-import {Figtree_400Regular, Figtree_600SemiBold, useFonts} from '@expo-google-fonts/figtree';
+import {
+    Figtree_300Light,
+    Figtree_400Regular,
+    Figtree_500Medium,
+    Figtree_600SemiBold,
+    Figtree_700Bold,
+    Figtree_800ExtraBold,
+    useFonts
+} from '@expo-google-fonts/figtree';
 
 export type ThemedTextProps = TextProps & {
     lightColor?: string;
     darkColor?: string;
-    type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+    type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'tiny' | 'sectionTitle';
 };
 
 export function ThemedText({
@@ -19,6 +27,7 @@ export function ThemedText({
     const [fontsLoaded] = useFonts({
         Figtree_400Regular,
         Figtree_600SemiBold,
+        Figtree_300Light, Figtree_500Medium, Figtree_700Bold, Figtree_800ExtraBold,
     });
 
     if (!fontsLoaded) {
@@ -34,6 +43,9 @@ export function ThemedText({
                 type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
                 type === 'subtitle' ? styles.subtitle : undefined,
                 type === 'link' ? styles.link : undefined,
+                type === 'tiny' ? styles.tiny : undefined,
+                type === 'sectionTitle' ? styles.sectionTitle : undefined,
+
                 style,
             ]}
             {...rest}
@@ -69,4 +81,12 @@ const styles = StyleSheet.create({
         color: '#0a7ea4',
         fontFamily: 'Figtree_400Regular',
     },
+    tiny: {
+        fontSize: 14,
+        fontFamily: 'Figtree_300Light',
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontFamily: 'Figtree_600SemiBold',
+    }
 });

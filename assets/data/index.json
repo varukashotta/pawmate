@@ -1,0 +1,139 @@
+[
+    {
+        "mainCategory": "General Health",
+        "description": "Comprehensive services to maintain and improve your pet’s overall health.",
+        "categories": [
+            {
+                "category": "Preventive Care",
+                "description":
+                "Services aimed at maintaining your pet's health and preventing diseases.",
+                "subcategories": [
+                    "Routine Check-Ups",
+                    "Vaccinations",
+                    "Parasite Prevention",
+                    "Spaying and Neutering",
+                    "Dental Cleanings"
+                ]
+            },
+            {
+                "category": "Senior Pet Care",
+                "description":
+                "Specialized care for aging pets to ensure their comfort and health.",
+                "subcategories": [
+                    "Geriatric Assessments",
+                    "Mobility Issues",
+                    "Cognitive Decline",
+                    "Age-Related Health Monitoring"
+                ]
+            },
+            {
+                "category": "Weight & Diet",
+                "description":
+                "Services to maintain your pet's optimal health through proper diet.",
+                "subcategories": ["Dietary Planning", "Obesity Management", "Allergy Diets"]
+            },
+            {
+                "category": "Reproductive Services",
+                "description": "All aspects of breeding and pregnancy management for pets.",
+                "subcategories": [
+                    "Pregnancy Care",
+                    "Breeding Consultations",
+                    "Reproductive Health Checks"
+                ]
+            },
+            {
+                "category": "Dental Care",
+                "description": "Maintaining your pet's oral health.",
+                "subcategories": [
+                    "Dental Examinations",
+                    "Teeth Cleaning",
+                    "Treatment of Oral Diseases"
+                ]
+            }
+        ]
+    },
+    {
+        "mainCategory": "Medical Services",
+        "description": "Advanced medical services to diagnose and treat various health conditions.",
+        "categories": [
+            {
+                "category": "Medical Conditions",
+                "description":
+                "Non-emergency health issues requiring diagnosis and ongoing management.",
+                "subcategories": [
+                    "Skin and Ear Issues",
+                    "Gastrointestinal Problems",
+                    "Chronic Diseases (Arthritis, Diabetes)",
+                    "Eye Conditions",
+                    "Heart and Kidney Diseases"
+                ]
+            },
+            {
+                "category": "Surgical Procedure",
+                "description": "All surgical interventions your pet might need.",
+                "subcategories": [
+                    "Elective Surgeries (Spay/Neuter)",
+                    "Orthopedic Surgeries",
+                    "Tumor Removals",
+                    "Dental Extractions"
+                ]
+            },
+            {
+                "category": "Diagnostic Services",
+                "description": "Tests and procedures to accurately diagnose health issues.",
+                "subcategories": [
+                    "Laboratory Testing (Blood Work, Urinalysis)",
+                    "Imaging (X-Rays, Ultrasounds)",
+                    "Allergy Testing"
+                ]
+            }
+        ]
+    },
+    {
+        "mainCategory": "Emergency and Behavioral",
+        "description": "Immediate and specialized services to address urgent and behavioral needs.",
+        "categories": [
+            {
+                "category": "Injuries and Emergencies",
+                "description": "Urgent situations needing immediate veterinary attention.",
+                "subcategories": [
+                    "Injuries (Fractures, Wounds)",
+                    "Poisoning or Toxic Ingestion",
+                    "Respiratory Distress",
+                    "Foreign Object Ingestion",
+                    "Severe Pain or Bleeding"
+                ]
+            },
+            {
+                "category": "Behavioral Concerns",
+                "description":
+                "Issues related to your pet's behavior that may require professional intervention.",
+                "subcategories": [
+                    "Anxiety and Aggression",
+                    "House Soiling",
+                    "Excessive Barking or Meowing",
+                    "Destructive Behavior"
+                ]
+            },
+            {
+                "category": "End-of-Life Care",
+                "description": "Support during the difficult stages of a pet's life.",
+                "subcategories": [
+                    "Hospice Services",
+                    "Euthanasia Consultations",
+                    "Grief Support Resources"
+                ]
+            },
+            {
+                "category": "Specialty Referrals",
+                "description":
+                "Connecting you with specialized veterinary professionals for advanced care.",
+                "subcategories": [
+                    "Oncology (Cancer Treatment)",
+                    "Neurology",
+                    "Behavioral Specialists"
+                ]
+            }
+        ]
+    }
+]

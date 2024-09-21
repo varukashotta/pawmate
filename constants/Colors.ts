@@ -12,8 +12,9 @@ export const Colors = {
     background: '#fff',
     tint: tintColorLight,
     icon: '#687076',
-    tabIconDefault: '#687076',
+    tabIconDefault: '#e1e1e1',
     tabIconSelected: tintColorLight,
+    highlightBackground: '#e0f7fa', // Light cyan as an example
   },
   dark: {
     text: '#ECEDEE',
@@ -22,5 +23,7 @@ export const Colors = {
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
+    highlightBackground: '#004d40', // Dark cyan as an example
+
   },
 };

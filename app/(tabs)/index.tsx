@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     FlatList,
     View,
-    Text, Dimensions,
+    Text, Dimensions, Modal, StatusBar,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemedText } from '@/components/ThemedText';
@@ -17,13 +17,15 @@ import EventCard from '@/components/home/event';
 import CategoryButton from '@/components/home/category';
 import Section from '@/components/home/section';
 import Notification from '@/components/notifications'
+import VetSearchFilter from "@/components/search";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 
 const categories = [
-    { iconName: 'bed-outline', title: 'Find a Vet', subtitle: 'Veterinary' },
-    { iconName: 'cut-outline', title: 'Pet Care', subtitle: 'Grooming' },
-    { iconName: 'people-outline', title: 'Community', subtitle: 'Resources' },
-    { iconName: 'cart-outline', title: 'Pet Supplies', subtitle: 'Marketplace' },
+    { iconName: 'bed-outline', title: 'Find a Vet', subtitle: 'Veterinary', description: "Comprehensive healthcare for pets, including medical, preventive, and emergency care." },
+    { iconName: 'cut-outline', title: 'Pet Care', subtitle: 'Wellness', description: "Services that contribute to your pet's overall well-being and daily care needs." },
+    { iconName: 'people-outline', title: 'Community', subtitle: 'Resources', description: "Connect with other pet owners, access resources, and explore pet-friendly spaces." },
+    { iconName: 'cart-outline', title: 'Pet Supplies', subtitle: 'Marketplace', description: "A marketplace for pet products and supplies, DIY resources, and trade opportunities." },
 ];
 
 const events = [
@@ -54,7 +56,10 @@ const petNews = [
 
 const HomeScreen: React.FC = () => {
     const [showBookingAlert, setShowBookingAlert] = React.useState(true);
-
+    const [showModal, setShowModal] = React.useState(false);
+    const categoryClicked = () => {
+        setShowModal(true)
+    }
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -90,10 +95,12 @@ const HomeScreen: React.FC = () => {
                 <ThemedView style={styles.categoriesContainer}>
                     {categories.map((category, index) => (
                         <CategoryButton
+                            categoryClicked={categoryClicked}
                             key={index}
                             iconName={category.iconName as keyof typeof Ionicons.glyphMap}
                             title={category.title}
                             subtitle={category.subtitle}
+                            description={category.description}
                         />
                     ))}
                 </ThemedView>
@@ -137,6 +144,13 @@ const HomeScreen: React.FC = () => {
                     <FeaturedLocation />
                 </Section>
             </ScrollView>
+            <Modal visible={showModal} animationType={"slide"} >
+                <StatusBar hidden={true} />
+                <ScrollView style={{flex: 1, marginTop: responsiveSize(50)}}>
+                    <Ionicons style={{alignSelf: "flex-end", paddingRight: responsiveSize(10)}} name={"close"} size={responsiveSize(35)} color={"#000"} onPress={() => setShowModal(false)} />
+                    <VetSearchFilter />
+                </ScrollView>
+            </Modal>
         </View>
     );
 };
@@ -146,7 +160,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        paddingTop: responsiveSize(50),
+        paddingTop: responsiveSize(55),
     },
     header: {
         flexDirection: 'row',
