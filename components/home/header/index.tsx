@@ -1,0 +1,89 @@
+import {useColorScheme} from "@/hooks/useColorScheme";
+import {Colors} from "@/constants/Colors";
+import {ThemedView} from "@/components/ThemedView";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {ThemedText} from "@/components/ThemedText";
+import Notification from "@/components/notifications";
+import {Ionicons} from "@expo/vector-icons";
+import {responsiveSize} from "@/components/utils/resposive";
+import React, {Dispatch, FC, SetStateAction} from "react";
+
+
+
+interface IHeader {
+    showBookingAlert: boolean;
+    setShowBookingAlert: Dispatch<SetStateAction<boolean>>
+}
+const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
+
+    const colorScheme = useColorScheme();
+    // Colors[colorScheme ?? 'light'].tint
+    return (
+
+        <ThemedView style={styles.header}>
+            <View style={styles.headerTitleContainer}>
+                <ThemedText type="title">Al, Welcome to PetSphere!</ThemedText>
+
+                {/* Booking Alert */}
+                {showBookingAlert && (
+                    <Notification setShowBookingAlert={setShowBookingAlert}/>
+                )}
+            </View>
+
+            {/* Icons */}
+            <View style={styles.headerIconsContainer}>
+                <TouchableOpacity style={styles.iconButton}>
+                    <Ionicons name="search" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].tint}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconButton}>
+                    <View>
+                        <Ionicons name="notifications-outline" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].tint}/>
+                        {/* Notification Badge */}
+                        <View style={styles.badge}>
+                            <Text style={styles.badgeText}>5</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        </ThemedView>
+    )
+}
+
+export default Header
+
+
+const styles = StyleSheet.create({
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        paddingHorizontal: responsiveSize(16),
+        // paddingBottom: responsiveSize(16),
+    },
+    headerTitleContainer: {
+        flex: 1,
+    },
+    headerIconsContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    iconButton: {
+        marginLeft: responsiveSize(16),
+    },
+    badge: {
+        position: 'absolute',
+        right: -6,
+        top: 1,
+        backgroundColor: 'red',
+        borderRadius: 10,
+        width: responsiveSize(18),
+        height: responsiveSize(18),
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    badgeText: {
+        color: '#fff',
+        fontSize: responsiveSize(12),
+        fontWeight: 'bold',
+    },
+})

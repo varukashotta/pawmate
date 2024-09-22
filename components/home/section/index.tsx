@@ -2,8 +2,9 @@
 import {ThemedText} from "@/components/ThemedText";
 import {StyleSheet} from "react-native";
 import {responsiveSize} from "@/components/utils/resposive";
+import {FC, ReactNode} from "react";
 
-const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+const Section: FC<{ title: string; children: ReactNode }> = ({ title, children }) => (
     <>
         <ThemedText type="subtitle" style={styles.sectionTitle}>{title}</ThemedText>
         {children}

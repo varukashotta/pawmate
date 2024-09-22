@@ -1,21 +1,16 @@
-import React, { useState, useMemo } from 'react';
-import {
-    TextInput,
-    TouchableOpacity,
-    StyleSheet,
-    LayoutAnimation,
-    Platform,
-    UIManager,
-} from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
-import DateTimePicker, { Event as DateTimePickerEvent } from '@react-native-community/datetimepicker';
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { useThemeColor } from '@/hooks/useThemeColor';
-import { Colors } from '@/constants/Colors';
-import { responsiveSize } from "@/components/utils/resposive";
+import React, {useMemo, useState} from 'react';
+import {LayoutAnimation, Platform, StyleSheet, TextInput, TouchableOpacity, UIManager,} from 'react-native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import {ThemedText} from "@/components/ThemedText";
+import {ThemedView} from "@/components/ThemedView";
+import {useThemeColor} from '@/hooks/useThemeColor';
+import {Colors} from '@/constants/Colors';
+import {responsiveSize} from "@/components/utils/resposive";
 import mainCategories from "@/assets/data/index.json";
+import Tag from "@/components/tag";
+import SelectButtons from "@/components/selectButtons";
+import {useColorScheme} from "@/hooks/useColorScheme";
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -30,28 +25,9 @@ type RootStackParamList = {
         selectedVetSubcategory: string;
     };
 };
-
-interface VetServiceCategory {
-    category: string;
-    description: string;
-    subcategories: string[];
-}
-
-interface MainCategory {
-    mainCategory: string;
-    description: string;
-    categories: VetServiceCategory[];
-}
-
-// Reusable Tag Component
-const Tag: React.FC<{ label: string; onPress: () => void }> = ({ label, onPress }) => (
-    <TouchableOpacity style={styles.tag} onPress={onPress}>
-        <ThemedText style={styles.tagText}>{label}</ThemedText>
-        <Ionicons name="create-outline" size={responsiveSize(18)} color="#888" />
-    </TouchableOpacity>
-);
-
 const VetSearchFilter: React.FC = () => {
+    const colorScheme = useColorScheme();
+
     const [location, setLocation] = useState<string>('18 Moule Street, Brighton, Victoria, 3183');
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
     const [selectedServiceType, setSelectedServiceType] = useState<string>('');
@@ -64,16 +40,10 @@ const VetSearchFilter: React.FC = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const serviceTypes = useMemo(() => [
-        { label: 'Telehealth', icon: 'videocam-outline' },
-        { label: 'Mobile', icon: 'car-outline' },
-        { label: 'Clinic', icon: 'home-outline' },
+        {label: 'Telehealth', icon: 'videocam-outline'},
+        {label: 'Mobile', icon: 'car-outline'},
+        {label: 'Clinic', icon: 'home-outline'},
     ], []);
-
-    const textColor = useThemeColor({ light: Colors.light.text, dark: Colors.dark.text }, 'text');
-    const borderColor = useThemeColor({ light: Colors.light.tabIconDefault, dark: Colors.dark.tabIconDefault }, 'tabIconDefault');
-    const backgroundColor = useThemeColor({ light: Colors.light.background, dark: Colors.dark.background }, 'background');
-    const iconColor = useThemeColor({ light: Colors.light.icon, dark: Colors.dark.icon }, 'icon');
-    const tintColor = useThemeColor({ light: Colors.light.tint, dark: Colors.dark.tint }, 'tint');
 
     // Function to handle service type selection and reset dependent categories
     const handleServiceTypeSelect = (type: string) => {
@@ -106,7 +76,7 @@ const VetSearchFilter: React.FC = () => {
     // Function to handle location editing
     const handleLocationEdit = () => setEditLocation(true);
 
-    const handleDateChange = (event: DateTimePickerEvent, date?: Date | undefined) => {
+    const handleDateChange = (event: any, date?: Date | undefined) => {
         if (date) setSelectedDate(date);
     };
 
@@ -129,30 +99,16 @@ const VetSearchFilter: React.FC = () => {
         });
     };
 
-    const renderButton = (label: string, isSelected: boolean, onPress: () => void) => (
-        <TouchableOpacity
-            style={[
-                styles.button,
-                isSelected && styles.selectedButton,
-                { borderColor, backgroundColor: isSelected ? tintColor : '#fff' },
-            ]}
-            onPress={onPress}
-        >
-            <ThemedText style={[styles.buttonText, isSelected && { color: '#fff' }]}>
-                {label}
-            </ThemedText>
-        </TouchableOpacity>
-    );
 
     return (
         <ThemedView style={styles.container}>
             {/* Location Input/Tag */}
-            <ThemedText style={[styles.label, { color: textColor }]} type="subtitle">
+            <ThemedText style={[styles.label]} type="subtitle">
                 Enter Location
             </ThemedText>
             {editLocation || !location ? (
                 <TextInput
-                    style={[styles.input, { borderColor, color: textColor }]}
+                    style={[styles.input, {borderColor: Colors[colorScheme ?? 'light'].tabIconDefault}]}
                     placeholder="Search Location"
                     value={location}
                     onChangeText={setLocation}
@@ -160,11 +116,11 @@ const VetSearchFilter: React.FC = () => {
                     onBlur={() => location && setEditLocation(false)} // Switch to tag when input is blurred
                 />
             ) : (
-                <Tag label={location} onPress={handleLocationEdit} />
+                <Tag label={location} onPress={handleLocationEdit}/>
             )}
 
             {/* Date Picker */}
-            <ThemedText style={[styles.label, { color: textColor }]} type="subtitle">
+            <ThemedText style={[styles.label]} type="subtitle">
                 Select Date
             </ThemedText>
             <DateTimePicker
@@ -176,19 +132,20 @@ const VetSearchFilter: React.FC = () => {
             />
 
             {/* Service Type Selection */}
-            <ThemedText style={[styles.label, { color: textColor }]} type="subtitle">
+            <ThemedText style={[styles.label]} type="subtitle">
                 Type of Service
             </ThemedText>
             {!editServiceType && selectedServiceType ? (
-                <Tag label={selectedServiceType} onPress={() => setEditServiceType(true)} />
+                <Tag label={selectedServiceType} onPress={() => setEditServiceType(true)}/>
             ) : (
                 <ThemedView style={styles.rowContainer}>
-                    {serviceTypes.map((service) =>
-                        renderButton(
-                            service.label,
-                            selectedServiceType === service.label,
-                            () => handleServiceTypeSelect(service.label)
-                        )
+                    {serviceTypes.map((service, i) =>
+                        <SelectButtons
+                            key={i}
+                            label={service.label}
+                            isSelected={selectedServiceType === service.label}
+                            onPress={() => handleServiceTypeSelect(service.label)}
+                        />
                     )}
                 </ThemedView>
             )}
@@ -196,19 +153,20 @@ const VetSearchFilter: React.FC = () => {
             {/* Main Category Selection */}
             {selectedServiceType && (
                 <>
-                    <ThemedText style={[styles.label, { color: textColor }]}>
+                    <ThemedText style={[styles.label]}>
                         Select Main Category
                     </ThemedText>
                     {selectedMainCategory ? (
-                        <Tag label={selectedMainCategory} onPress={() => handleMainCategorySelect(selectedMainCategory)} />
+                        <Tag label={selectedMainCategory}
+                             onPress={() => handleMainCategorySelect(selectedMainCategory)}/>
                     ) : (
                         <ThemedView style={styles.rowContainer}>
                             {mainCategories.map((mainCat) =>
-                                renderButton(
-                                    mainCat.mainCategory,
-                                    selectedMainCategory === mainCat.mainCategory,
-                                    () => handleMainCategorySelect(mainCat.mainCategory)
-                                )
+                                <SelectButtons
+                                    label={mainCat.mainCategory}
+                                    isSelected={selectedMainCategory === mainCat.mainCategory}
+                                    onPress={() => handleMainCategorySelect(mainCat.mainCategory)}
+                                />
                             )}
                         </ThemedView>
                     )}
@@ -218,21 +176,21 @@ const VetSearchFilter: React.FC = () => {
             {/* Category Selection */}
             {selectedMainCategory && (
                 <>
-                    <ThemedText style={[styles.label, { color: textColor }]}>
+                    <ThemedText style={[styles.label]}>
                         Select Category
                     </ThemedText>
                     {selectedCategory ? (
-                        <Tag label={selectedCategory} onPress={() => handleCategorySelect(selectedCategory)} />
+                        <Tag label={selectedCategory} onPress={() => handleCategorySelect(selectedCategory)}/>
                     ) : (
                         <ThemedView style={styles.rowContainer}>
                             {mainCategories
                                 .find((cat) => cat.mainCategory === selectedMainCategory)
                                 ?.categories.map((category) =>
-                                    renderButton(
-                                        category.category,
-                                        selectedCategory === category.category,
-                                        () => handleCategorySelect(category.category)
-                                    )
+                                    <SelectButtons
+                                        label={category.category}
+                                        isSelected={selectedCategory === category.category}
+                                        onPress={() => handleCategorySelect(category.category)}
+                                    />
                                 )}
                         </ThemedView>
                     )}
@@ -242,22 +200,23 @@ const VetSearchFilter: React.FC = () => {
             {/* Subcategory Selection */}
             {selectedCategory && (
                 <>
-                    <ThemedText style={[styles.label, { color: textColor }]}>
+                    <ThemedText style={[styles.label]}>
                         Select Subcategory
                     </ThemedText>
                     {selectedSubcategory ? (
-                        <Tag label={selectedSubcategory} onPress={() => handleSubcategorySelect(selectedSubcategory)} />
+                        <Tag label={selectedSubcategory} onPress={() => handleSubcategorySelect(selectedSubcategory)}/>
                     ) : (
                         <ThemedView style={styles.rowContainer}>
                             {mainCategories
                                 .find((cat) => cat.mainCategory === selectedMainCategory)
                                 ?.categories.find((cat) => cat.category === selectedCategory)
-                                ?.subcategories.map((subcategory) =>
-                                    renderButton(
-                                        subcategory,
-                                        selectedSubcategory === subcategory,
-                                        () => handleSubcategorySelect(subcategory)
-                                    )
+                                ?.subcategories.map((subcategory, i) =>
+                                    <SelectButtons
+                                        key={i}
+                                        label={subcategory}
+                                        isSelected={selectedSubcategory === subcategory}
+                                        onPress={() => handleSubcategorySelect(subcategory)}
+                                    />
                                 )}
                         </ThemedView>
                     )}
@@ -265,7 +224,7 @@ const VetSearchFilter: React.FC = () => {
             )}
 
             {/* Submit Button */}
-            <TouchableOpacity style={[styles.submitButton, { backgroundColor: tintColor }]} onPress={handleSubmit}>
+            <TouchableOpacity style={[styles.submitButton, {backgroundColor: Colors[colorScheme ?? 'light'].buttonBg}]} onPress={handleSubmit}>
                 <ThemedText style={styles.submitButtonText}>
                     Search
                 </ThemedText>
@@ -275,8 +234,8 @@ const VetSearchFilter: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-    container: { paddingHorizontal: responsiveSize(16), flex: 1 },
-    label: { marginBottom: responsiveSize(8) },
+    container: {paddingHorizontal: responsiveSize(16), flex: 1},
+    label: {marginBottom: responsiveSize(8)},
     input: {
         borderWidth: 1,
         borderRadius: responsiveSize(8),
@@ -305,29 +264,15 @@ const styles = StyleSheet.create({
         marginHorizontal: responsiveSize(6),
         marginBottom: responsiveSize(12),
     },
-    selectedButton: { backgroundColor: '#007AFF' },
-    buttonText: { textAlign: 'center', marginTop: responsiveSize(4) },
+    selectedButton: {backgroundColor: '#007AFF'},
+    buttonText: {textAlign: 'center', marginTop: responsiveSize(4)},
     submitButton: {
         paddingVertical: responsiveSize(12),
         borderRadius: responsiveSize(8),
         alignItems: 'center',
         marginTop: responsiveSize(16),
     },
-    submitButtonText: { color: '#fff', fontWeight: '600', fontSize: responsiveSize(18) },
-    tag: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#e0e0e0',
-        paddingVertical: responsiveSize(6), // Reduced padding for smaller tags
-        paddingHorizontal: responsiveSize(10),
-        borderRadius: responsiveSize(6), // Reduced radius
-        marginBottom: responsiveSize(16),
-    },
-    tagText: {
-        marginRight: responsiveSize(8),
-        fontSize: responsiveSize(14),
-        color: '#333',
-    },
+    submitButtonText: {color: '#fff', fontWeight: '600', fontSize: responsiveSize(18)},
 });
 
 export default VetSearchFilter;

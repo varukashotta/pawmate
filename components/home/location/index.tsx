@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
@@ -57,7 +57,7 @@ const FeaturedLocation = () => (
                     </ThemedText>
                 </View>
                 <TouchableOpacity style={styles.directionsButton} onPress={() => { /* Handle press */ }}>
-                    <Text style={styles.buttonText}>Get Directions</Text>
+                    <ThemedText style={styles.buttonText}>Get Directions</ThemedText>
                 </TouchableOpacity>
             </View>
         </View>
@@ -77,12 +77,6 @@ const styles = StyleSheet.create({
     featuredLocationContainer: {
         borderRadius: responsiveSize(12),
         overflow: "hidden",
-        backgroundColor: "#fff", // White background for the card
-        elevation: 3, // Shadow for Android
-        shadowColor: "#000", // Shadow for iOS
-        shadowOffset: { width: 0, height: 2 }, // Shadow offset for iOS
-        shadowOpacity: 0.1, // Shadow opacity for iOS
-        shadowRadius: 4, // Shadow radius for iOS
     },
     map: {
         width: "100%",
@@ -102,7 +96,6 @@ const styles = StyleSheet.create({
     locationTitle: {
         fontSize: responsiveSize(16),
         marginBottom: responsiveSize(4),
-        color: "#333",
     },
     locationDistance: {
         color: "#666",
@@ -117,7 +110,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     buttonText: {
-        color: "#fff",
         fontSize: responsiveSize(14),
     },
     starContainer: {

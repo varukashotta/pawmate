@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
         borderColor: '#e1e1e1',
         borderRadius: responsiveSize(8),
         padding: responsiveSize(8),
-        backgroundColor: '#fff',
         width: CARD_WIDTH,
         height: responsiveSize(100),
         marginRight: responsiveSize(16), // Optional: Add spacing between cards
