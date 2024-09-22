@@ -9,18 +9,21 @@ import {
     Figtree_800ExtraBold,
     useFonts
 } from '@expo-google-fonts/figtree';
+import {responsiveSize} from "@/components/utils/resposive";
 
 export type ThemedTextProps = TextProps & {
     lightColor?: string;
     darkColor?: string;
-    type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'tiny' | 'sectionTitle';
+    fontSize?: 'mini' | 'tiny' | 'small' | 'default' | 'large' | 'title';
+    fontWeight?: 'light' | 'regular' | 'medium' | 'semiBold' | 'bold' | 'extraBold';
 };
 
 export function ThemedText({
                                style,
                                lightColor,
                                darkColor,
-                               type = 'default',
+                               fontSize = 'default',  // Default font size
+                               fontWeight = 'regular',  // Default font weight
                                ...rest
                            }: ThemedTextProps) {
     const color = useThemeColor({light: lightColor, dark: darkColor}, 'text');
@@ -34,18 +37,36 @@ export function ThemedText({
         return <View><Text>Loading</Text></View>;
     }
 
+    // Map the fontSize prop to responsive sizes
+    const getFontSize = () => {
+        switch (fontSize) {
+            case 'mini': return responsiveSize(12);
+            case 'tiny': return responsiveSize(14);
+            case 'small': return responsiveSize(16);
+            case 'default': return responsiveSize(18);
+            case 'large': return responsiveSize(24);
+            case 'title': return responsiveSize(32);
+            default: return responsiveSize(18);
+        }
+    };
+
+    // Map the fontWeight prop to the appropriate font family
+    const getFontFamily = () => {
+        switch (fontWeight) {
+            case 'light': return 'Figtree_300Light';
+            case 'regular': return 'Figtree_400Regular';
+            case 'medium': return 'Figtree_500Medium';
+            case 'semiBold': return 'Figtree_600SemiBold';
+            case 'bold': return 'Figtree_700Bold';
+            case 'extraBold': return 'Figtree_800ExtraBold';
+            default: return 'Figtree_500Medium';  // Default to medium weight
+        }
+    };
+
     return (
         <Text
             style={[
-                {color},
-                type === 'default' ? styles.default : undefined,
-                type === 'title' ? styles.title : undefined,
-                type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-                type === 'subtitle' ? styles.subtitle : undefined,
-                type === 'link' ? styles.link : undefined,
-                type === 'tiny' ? styles.tiny : undefined,
-                type === 'sectionTitle' ? styles.sectionTitle : undefined,
-
+                {color, fontSize: getFontSize(), fontFamily: getFontFamily()},
                 style,
             ]}
             {...rest}
@@ -55,38 +76,7 @@ export function ThemedText({
 
 const styles = StyleSheet.create({
     default: {
-        fontSize: 16,
-        lineHeight: 24,
+        fontSize: responsiveSize(18),
         fontFamily: 'Figtree_400Regular',
-    },
-    defaultSemiBold: {
-        fontSize: 16,
-        lineHeight: 24,
-        fontFamily: 'Figtree_600SemiBold',
-    },
-    title: {
-        fontSize: 32,
-        fontWeight: 'bold',
-        lineHeight: 32,
-        fontFamily: 'Figtree_600SemiBold',
-    },
-    subtitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        fontFamily: 'Figtree_600SemiBold',
-    },
-    link: {
-        lineHeight: 30,
-        fontSize: 16,
-        color: '#0a7ea4',
-        fontFamily: 'Figtree_400Regular',
-    },
-    tiny: {
-        fontSize: 14,
-        fontFamily: 'Figtree_300Light',
-    },
-    sectionTitle: {
-        fontSize: 18,
-        fontFamily: 'Figtree_600SemiBold',
     }
 });

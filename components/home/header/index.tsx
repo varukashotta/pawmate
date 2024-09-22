@@ -23,7 +23,7 @@ const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
 
         <ThemedView style={styles.header}>
             <View style={styles.headerTitleContainer}>
-                <ThemedText type="title">Al, Welcome to PetSphere!</ThemedText>
+                <ThemedText fontSize={"large"} fontWeight={"medium"}>Al, Welcome to PetSphere!</ThemedText>
 
                 {/* Booking Alert */}
                 {showBookingAlert && (

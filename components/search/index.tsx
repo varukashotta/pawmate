@@ -11,6 +11,7 @@ import mainCategories from "@/assets/data/index.json";
 import Tag from "@/components/tag";
 import SelectButtons from "@/components/selectButtons";
 import {useColorScheme} from "@/hooks/useColorScheme";
+import Button from "@/components/button";
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -224,11 +225,7 @@ const VetSearchFilter: React.FC = () => {
             )}
 
             {/* Submit Button */}
-            <TouchableOpacity style={[styles.submitButton, {backgroundColor: Colors[colorScheme ?? 'light'].buttonBg}]} onPress={handleSubmit}>
-                <ThemedText style={styles.submitButtonText}>
-                    Search
-                </ThemedText>
-            </TouchableOpacity>
+            <Button title={"Search"} size={"large"} onPress={() => console.log("test")} />
         </ThemedView>
     );
 };

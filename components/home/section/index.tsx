@@ -6,7 +6,7 @@ import {FC, ReactNode} from "react";
 
 const Section: FC<{ title: string; children: ReactNode }> = ({ title, children }) => (
     <>
-        <ThemedText type="subtitle" style={styles.sectionTitle}>{title}</ThemedText>
+        <ThemedText fontWeight={"bold"} fontSize="default" style={styles.sectionTitle}>{title}</ThemedText>
         {children}
     </>
 );

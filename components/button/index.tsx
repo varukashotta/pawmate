@@ -27,7 +27,7 @@ const Button: FC<IButton> = ({
 
     return (
         <TouchableOpacity style={buttonStyles} onPress={onPress}>
-            <ThemedText type={"defaultSemiBold"} style={{color: "#fff"}}>{title}</ThemedText>
+            <ThemedText fontWeight={"semiBold"} style={{color: "#fff"}}>{title}</ThemedText>
         </TouchableOpacity>
     );
 };
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,     // Default button padding
     },
     large: {
-        paddingVertical: 20,     // Larger padding for large button
+        paddingVertical: 16,     // Larger padding for large button
     },
     small: {
         paddingVertical: 5,      // Smaller padding for small button

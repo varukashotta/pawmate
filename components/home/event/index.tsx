@@ -9,8 +9,8 @@ import {responsiveSize} from "@/components/utils/resposive";
 const EventCard: React.FC<EventCardProps> = ({image, title, time}) => (
     <ThemedView style={styles.eventCard}>
         <Image source={{uri: image}} style={styles.eventImage}/>
-        <ThemedText type="defaultSemiBold" style={styles.eventTitle}>{title}</ThemedText>
-        <ThemedText type="default" style={styles.eventTime}>{time}</ThemedText>
+        <ThemedText fontWeight={"medium"} fontSize={"small"}  style={styles.eventTitle}>{title}</ThemedText>
+        <ThemedText fontSize={"tiny"}  style={styles.eventTime}>{time}</ThemedText>
     </ThemedView>
 );
 

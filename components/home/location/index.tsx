@@ -49,11 +49,11 @@ const FeaturedLocation = () => (
             {/* Info Overlay */}
             <View style={styles.infoContainer}>
                 <View style={styles.infoTextContainer}>
-                    <ThemedText type="defaultSemiBold" style={styles.locationTitle}>
+                    <ThemedText fontSize={"small"} style={styles.locationTitle}>
                         Dog's Favorite Beach
                     </ThemedText>
                     <CustomStarRating rating={5} />
-                    <ThemedText type="default" style={styles.locationDistance}>
+                    <ThemedText fontSize={"tiny"}  style={styles.locationDistance}>
                         5 min away
                     </ThemedText>
                 </View>
@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
         flex: 1.5,
     },
     locationTitle: {
-        fontSize: responsiveSize(16),
         marginBottom: responsiveSize(4),
     },
     locationDistance: {
@@ -108,9 +107,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: responsiveSize(16),
         justifyContent: "center",
         alignItems: "center",
-    },
-    buttonText: {
-        fontSize: responsiveSize(14),
     },
     starContainer: {
         flexDirection: "row",
