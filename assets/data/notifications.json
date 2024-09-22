@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "image": "https://via.placeholder.com/50",
+    "text": "Your pet's food has been delivered!",
+    "time": "2 hours ago"
+  },
+  {
+    "id": "2",
+    "image": "https://via.placeholder.com/50",
+    "text": "Don't forget to walk Bella today!",
+    "time": "4 hours ago"
+  },
+  {
+    "id": "3",
+    "image": "https://via.placeholder.com/50",
+    "text": "Tommy's vet appointment is tomorrow at 10 AM.",
+    "time": "6 hours ago"
+  },
+  {
+    "id": "4",
+    "image": "https://via.placeholder.com/50",
+    "text": "New message from Pet Sitter Lisa.",
+    "time": "8 hours ago"
+  },
+  {
+    "id": "5",
+    "image": "https://via.placeholder.com/50",
+    "text": "Max just earned a new training badge!",
+    "time": "1 day ago"
+  },
+  {
+    "id": "6",
+    "image": "https://via.placeholder.com/50",
+    "text": "Your pet grooming appointment is confirmed for tomorrow.",
+    "time": "2 days ago"
+  },
+  {
+    "id": "7",
+    "image": "https://via.placeholder.com/50",
+    "text": "Reminder: Buy more pet food.",
+    "time": "3 days ago"
+  },
+  {
+    "id": "8",
+    "image": "https://via.placeholder.com/50",
+    "text": "Dog walker Sarah is arriving in 30 minutes.",
+    "time": "4 days ago"
+  },
+  {
+    "id": "9",
+    "image": "https://via.placeholder.com/50",
+    "text": "Pet training session scheduled for Friday.",
+    "time": "5 days ago"
+  },
+  {
+    "id": "10",
+    "image": "https://via.placeholder.com/50",
+    "text": "Your pet care subscription has been renewed.",
+    "time": "6 days ago"
+  },
+  {
+    "id": "11",
+    "image": "https://via.placeholder.com/50",
+    "text": "Reminder: Schedule Tommy’s vaccination.",
+    "time": "1 week ago"
+  },
+  {
+    "id": "12",
+    "image": "https://via.placeholder.com/50",
+    "text": "Bella’s birthday is coming up!",
+    "time": "1 week ago"
+  },
+  {
+    "id": "13",
+    "image": "https://via.placeholder.com/50",
+    "text": "Your pet’s health report is ready.",
+    "time": "1 week ago"
+  },
+  {
+    "id": "14",
+    "image": "https://via.placeholder.com/50",
+    "text": "Max’s new collar is on the way.",
+    "time": "10 days ago"
+  },
+  {
+    "id": "15",
+    "image": "https://via.placeholder.com/50",
+    "text": "Update your pet’s vaccination record.",
+    "time": "12 days ago"
+  },
+  {
+    "id": "16",
+    "image": "https://via.placeholder.com/50",
+    "text": "Your pet insurance policy has been updated.",
+    "time": "2 weeks ago"
+  },
+  {
+    "id": "17",
+    "image": "https://via.placeholder.com/50",
+    "text": "Bella just earned her first agility badge!",
+    "time": "2 weeks ago"
+  },
+  {
+    "id": "18",
+    "image": "https://via.placeholder.com/50",
+    "text": "Reminder: Schedule pet grooming.",
+    "time": "3 weeks ago"
+  },
+  {
+    "id": "19",
+    "image": "https://via.placeholder.com/50",
+    "text": "Check your pet’s microchip details.",
+    "time": "1 month ago"
+  },
+  {
+    "id": "20",
+    "image": "https://via.placeholder.com/50",
+    "text": "Your pet sitter has left a new review.",
+    "time": "1 month ago"
+  }
+]

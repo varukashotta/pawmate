@@ -4,7 +4,8 @@ import MapView, { Marker } from "react-native-maps";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { responsiveSize } from "@/components/utils/resposive";
-import { FontAwesome } from "@expo/vector-icons"; // Ensure you have this installed
+import { FontAwesome } from "@expo/vector-icons";
+import Button from "../../button"; // Ensure you have this installed
 
 // @ts-ignore
 const CustomStarRating = ({ rating, maxRating = 5, size = 20, color = "#FFD700" }) => {
@@ -56,9 +57,9 @@ const FeaturedLocation = () => (
                         5 min away
                     </ThemedText>
                 </View>
-                <TouchableOpacity style={styles.directionsButton} onPress={() => { /* Handle press */ }}>
-                    <ThemedText style={styles.buttonText}>Get Directions</ThemedText>
-                </TouchableOpacity>
+                <View style={{flex: 1}}>
+                    <Button title={"Direct Me"} onPress={() => console.log("here")} />
+                </View>
             </View>
         </View>
     </ThemedView>
@@ -90,8 +91,7 @@ const styles = StyleSheet.create({
         // backgroundColor: "#f8f8f8", // Slightly lighter grey for info section
     },
     infoTextContainer: {
-        flex: 1,
-        marginRight: responsiveSize(8), // Space between text and button
+        flex: 1.5,
     },
     locationTitle: {
         fontSize: responsiveSize(16),

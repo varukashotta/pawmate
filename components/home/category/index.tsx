@@ -20,7 +20,7 @@ const CategoryButton: FC<CategoryButtonProps> = ({ iconName, title, subtitle, de
                     <ThemedText type="subtitle" style={styles.categoryTitle}>{title}</ThemedText>
                     <ThemedText type="defaultSemiBold" style={styles.categorySubtitle}>{subtitle}</ThemedText>
                 </View>
-                <Ionicons name={iconName} size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].tint} />
+                <Ionicons name={iconName} size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].icon} />
             </ThemedView>
             <ThemedText type="tiny" style={styles.categorySubtitle}>{truncateText(description, 30)}</ThemedText>
         </TouchableOpacity>

@@ -7,12 +7,13 @@ import Notification from "@/components/notifications";
 import {Ionicons} from "@expo/vector-icons";
 import {responsiveSize} from "@/components/utils/resposive";
 import React, {Dispatch, FC, SetStateAction} from "react";
+import {Link} from "expo-router";
 
 
 
 interface IHeader {
     showBookingAlert: boolean;
-    setShowBookingAlert: Dispatch<SetStateAction<boolean>>
+    setShowBookingAlert: Dispatch<SetStateAction<boolean>>;
 }
 const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
 
@@ -33,17 +34,19 @@ const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
             {/* Icons */}
             <View style={styles.headerIconsContainer}>
                 <TouchableOpacity style={styles.iconButton}>
-                    <Ionicons name="search" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].tint}/>
+                    <Ionicons name="search" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].icon}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconButton}>
+                <Link href="/notifications" asChild>
+                <TouchableOpacity style={[styles.iconButton]}>
                     <View>
-                        <Ionicons name="notifications-outline" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].tint}/>
+                        <Ionicons name="notifications-outline" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].icon}/>
                         {/* Notification Badge */}
-                        <View style={styles.badge}>
+                        <View style={[styles.badge,  {backgroundColor: Colors[colorScheme ?? 'light'].buttonBg }]}>
                             <Text style={styles.badgeText}>5</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
+                </Link>
             </View>
         </ThemedView>
     )
@@ -74,7 +77,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: -6,
         top: 1,
-        backgroundColor: 'red',
         borderRadius: 10,
         width: responsiveSize(18),
         height: responsiveSize(18),

@@ -43,6 +43,10 @@
         "projectId": "f3599bd7-b086-48ff-9cd3-ea7b34015d2e"
       }
     },
-    "owner": "varuka"
+    "owner": "varuka",
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/f3599bd7-b086-48ff-9cd3-ea7b34015d2e"
+    }
   }
 }

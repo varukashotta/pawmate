@@ -76,6 +76,8 @@ const HomeScreen: React.FC = () => {
 
     const colorScheme = useColorScheme();
 
+
+
     return (
         <ThemedView style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>

@@ -1,0 +1,371 @@
+[
+  {
+    "mainCategory": "Grooming",
+    "description": "Professional grooming services to keep your pet clean, healthy, and looking their best.",
+    "categories": [
+      {
+        "category": "Bathing and Cleaning",
+        "description": "Comprehensive bathing and cleaning services.",
+        "subcategories": [
+          "Full Baths",
+          "Dry Shampoo",
+          "Ear Cleaning",
+          "Nail Trimming",
+          "Anal Gland Expression"
+        ]
+      },
+      {
+        "category": "Hair Cutting and Styling",
+        "description": "Tailored haircuts and styling for various breeds and preferences.",
+        "subcategories": [
+          "Breed-Specific Cuts",
+          "Custom Styling",
+          "Puppy Cuts",
+          "Senior Pet Grooming"
+        ]
+      },
+      {
+        "category": "Flea and Tick Treatments",
+        "description": "Preventative and treatment services for flea and tick infestations.",
+        "subcategories": [
+          "Flea Baths",
+          "Tick Removal",
+          "Preventative Treatments",
+          "Medicated Shampoos"
+        ]
+      },
+      {
+        "category": "Specialized Grooming",
+        "description": "Additional grooming services for specific needs.",
+        "subcategories": [
+          "Teeth Brushing",
+          "Paw Care",
+          "Coat Conditioning",
+          "De-shedding Treatments"
+        ]
+      }
+    ]
+  },
+  {
+    "mainCategory": "Exercise & Activity",
+    "description": "Services to ensure your pet stays active, healthy, and mentally stimulated.",
+    "categories": [
+      {
+        "category": "Dog Walking",
+        "description": "Regular walking services tailored to your dog's needs.",
+        "subcategories": [
+          "Solo Walks",
+          "Group Walks",
+          "Puppy Walks",
+          "Senior Dog Walks"
+        ]
+      },
+      {
+        "category": "Pet Sitting",
+        "description": "In-home care services to look after your pet while you're away.",
+        "subcategories": [
+          "Overnight Sitting",
+          "Daily Visits",
+          "House Sitting",
+          "Feeding and Medication Administration"
+        ]
+      },
+      {
+        "category": "Playtime and Socialization",
+        "description": "Structured play sessions to promote socialization and exercise.",
+        "subcategories": [
+          "Dog Playgroups",
+          "Cat Socialization",
+          "Interactive Play Sessions",
+          "Behavioral Enrichment"
+        ]
+      },
+      {
+        "category": "Exercise Programs",
+        "description": "Customized exercise routines to keep your pet fit.",
+        "subcategories": [
+          "Agility Training",
+          "Swimming Sessions",
+          "Hiking Excursions",
+          "Fitness Assessments"
+        ]
+      }
+    ]
+  },
+  {
+    "mainCategory": "Training & Behavior",
+    "description": "Professional training services to improve your pet's behavior and obedience.",
+    "categories": [
+      {
+        "category": "Basic Obedience Training",
+        "description": "Foundational training for essential commands and manners.",
+        "subcategories": [
+          "Sit, Stay, Come",
+          "Leash Training",
+          "Housebreaking",
+          "Socialization Training"
+        ]
+      },
+      {
+        "category": "Advanced Training",
+        "description": "Higher-level training for specialized skills and behaviors.",
+        "subcategories": [
+          "Agility Training",
+          "Service Dog Training",
+          "Scent Work",
+          "Advanced Obedience"
+        ]
+      },
+      {
+        "category": "Behavior Modification",
+        "description": "Therapeutic services to address and correct behavioral issues.",
+        "subcategories": [
+          "Anxiety Management",
+          "Aggression Control",
+          "Fear Desensitization",
+          "Compulsive Behaviors"
+        ]
+      },
+      {
+        "category": "Puppy Training",
+        "description": "Early training programs designed for puppies.",
+        "subcategories": [
+          "Socialization Classes",
+          "Basic Commands",
+          "Crate Training",
+          "Preventative Behavior Training"
+        ]
+      }
+    ]
+  },
+  {
+    "mainCategory": "Nutrition & Diet",
+    "description": "Services to ensure your pet receives a balanced and appropriate diet.",
+    "categories": [
+      {
+        "category": "Dietary Planning",
+        "description": "Customized meal plans to meet your pet's nutritional needs.",
+        "subcategories": [
+          "Breed-Specific Diets",
+          "Age-Appropriate Nutrition",
+          "Weight Management Plans",
+          "Special Dietary Requirements"
+        ]
+      },
+      {
+        "category": "Meal Preparation",
+        "description": "Preparation and delivery of nutritious meals for your pet.",
+        "subcategories": [
+          "Home-Cooked Meal Delivery",
+          "Raw Diet Preparation",
+          "Homemade Treats",
+          "Specialty Diet Meals"
+        ]
+      },
+      {
+        "category": "Nutritional Counseling",
+        "description": "Expert advice on your pet's dietary needs.",
+        "subcategories": [
+          "Consultations with Nutritionists",
+          "Supplement Recommendations",
+          "Allergy and Intolerance Management",
+          "Behavioral Impact of Diet"
+        ]
+      },
+      {
+        "category": "Dietary Products",
+        "description": "Provision of quality food and supplements.",
+        "subcategories": [
+          "Premium Pet Foods",
+          "Vitamins and Supplements",
+          "Specialty Treats",
+          "Dietary Accessories (Bowls, Feeders)"
+        ]
+      }
+    ]
+  },
+  {
+    "mainCategory": "Boarding & Daycare",
+    "description": "Safe and comfortable boarding and daycare services for your pet when you're away.",
+    "categories": [
+      {
+        "category": "Boarding Services",
+        "description": "Overnight and extended stay care for your pet.",
+        "subcategories": [
+          "Single and Multi-Pet Accommodations",
+          "Climate-Controlled Facilities",
+          "Cage-Free Options",
+          "24/7 Supervision"
+        ]
+      },
+      {
+        "category": "Daycare Services",
+        "description": "Daytime care and socialization for your pet.",
+        "subcategories": [
+          "Half-Day Programs",
+          "Full-Day Programs",
+          "Group Play Sessions",
+          "Individual Attention Services"
+        ]
+      },
+      {
+        "category": "In-Home Boarding",
+        "description": "Personalized boarding care in a home environment.",
+        "subcategories": [
+          "Private Rooms",
+          "One-on-One Care",
+          "Home Walks",
+          "Personalized Feeding Schedules"
+        ]
+      },
+      {
+        "category": "Pet Taxi Services",
+        "description": "Transportation to and from boarding or daycare facilities.",
+        "subcategories": [
+          "Pick-Up and Drop-Off",
+          "Emergency Transportation",
+          "Scheduled Rides",
+          "Safe and Secure Transit"
+        ]
+      }
+    ]
+  },
+  {
+    "mainCategory": "Spa & Relaxation",
+    "description": "Luxurious spa services to pamper your pet and promote relaxation.",
+    "categories": [
+      {
+        "category": "Massage Therapy",
+        "description": "Professional massages to soothe and relax your pet.",
+        "subcategories": [
+          "Swedish Massage",
+          "Deep Tissue Massage",
+          "Aromatherapy",
+          "Acupressure"
+        ]
+      },
+      {
+        "category": "Hydrotherapy",
+        "description": "Water-based therapy to improve mobility and reduce stress.",
+        "subcategories": [
+          "Swimming Pools",
+          "Underwater Treadmills",
+          "Aqua Therapy Sessions",
+          "Rehabilitation Programs"
+        ]
+      },
+      {
+        "category": "Pet Acupuncture",
+        "description": "Traditional acupuncture treatments for wellness and pain management.",
+        "subcategories": [
+          "Pain Relief",
+          "Stress Reduction",
+          "Mobility Improvement",
+          "Enhanced Circulation"
+        ]
+      },
+      {
+        "category": "Aromatherapy",
+        "description": "Use of essential oils to promote your pet's emotional and physical well-being.",
+        "subcategories": [
+          "Relaxation Blends",
+          "Energy Boosting Scents",
+          "Calming Treatments",
+          "Mood Enhancement"
+        ]
+      }
+    ]
+  },
+  {
+    "mainCategory": "Transportation & Travel",
+    "description": "Services to facilitate safe and comfortable travel for your pet.",
+    "categories": [
+      {
+        "category": "Pet Transport Services",
+        "description": "Professional transportation for pets to various destinations.",
+        "subcategories": [
+          "Airport Transfers",
+          "Vet Visits",
+          "Day Trips",
+          "Long-Distance Travel"
+        ]
+      },
+      {
+        "category": "Travel Accessories",
+        "description": "Essential products to ensure a smooth journey for your pet.",
+        "subcategories": [
+          "Travel Carriers",
+          "Seat Covers",
+          "Portable Water Bowls",
+          "Safety Harnesses"
+        ]
+      },
+      {
+        "category": "Travel Planning",
+        "description": "Assistance with planning pet-friendly trips and accommodations.",
+        "subcategories": [
+          "Itinerary Planning",
+          "Pet-Friendly Lodging Reservations",
+          "Travel Documentation",
+          "Destination Research"
+        ]
+      },
+      {
+        "category": "Pet Relocation Services",
+        "description": "Comprehensive services for relocating your pet to a new home.",
+        "subcategories": [
+          "Home-to-Home Transport",
+          "Quarantine Assistance",
+          "Veterinary Coordination",
+          "Settling-In Support"
+        ]
+      }
+    ]
+  },
+  {
+    "mainCategory": "Wellness Products",
+    "description": "High-quality products to support your pet's overall well-being.",
+    "categories": [
+      {
+        "category": "Supplements",
+        "description": "Vitamins and supplements to enhance your pet's health.",
+        "subcategories": [
+          "Joint Supplements",
+          "Skin and Coat Vitamins",
+          "Digestive Aids",
+          "Immune Boosters"
+        ]
+      },
+      {
+        "category": "Health Accessories",
+        "description": "Products that contribute to your pet's health and comfort.",
+        "subcategories": [
+          "Orthopedic Beds",
+          "Cooling Mats",
+          "Interactive Toys",
+          "Calming Aids"
+        ]
+      },
+      {
+        "category": "Dental Care Products",
+        "description": "Items to maintain your pet's oral hygiene.",
+        "subcategories": [
+          "Dental Chews",
+          "Toothbrushes and Toothpaste",
+          "Water Additives",
+          "Dental Toys"
+        ]
+      },
+      {
+        "category": "Grooming Supplies",
+        "description": "Tools and products for at-home grooming.",
+        "subcategories": [
+          "Brushes and Combs",
+          "Shampoos and Conditioners",
+          "Clippers and Trimmers",
+          "Grooming Gloves"
+        ]
+      }
+    ]
+  }
+]

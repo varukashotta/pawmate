@@ -15,7 +15,7 @@ const SelectButton:FC<ISelectedButtons> = ({label, isSelected, onPress}) => {
             style={[
                 styles.button,
                 {
-                    borderColor: Colors[colorScheme ?? 'light'].tint,
+                    borderColor: Colors[colorScheme ?? 'light'].tabIconDefault,
                     backgroundColor: Colors[colorScheme ?? 'light'].background
                 },
             ]}
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
         padding: responsiveSize(12),
         borderWidth: 1,
         borderRadius: responsiveSize(8),
-        flexBasis: '30%',
-        marginHorizontal: responsiveSize(6),
+        flexBasis: '32%',
+        // marginHorizontal: responsiveSize(6),
         marginBottom: responsiveSize(12),
     },
     buttonText: {textAlign: 'center', marginTop: responsiveSize(4)},
