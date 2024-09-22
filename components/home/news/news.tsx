@@ -24,10 +24,10 @@ const PetNewsCard: React.FC<PetNewsCardProps> = ({ image, title, author, date, t
     return (
         <ThemedView style={[styles.petNewsCard, {borderColor: Colors[colorScheme ?? 'light'].tabIconDefault}]}>
             <ThemedView style={styles.textContainer}>
-                <ThemedText style={styles.petNewsTitle}>{title}</ThemedText>
+                <ThemedText fontWeight={"semiBold"} style={styles.petNewsTitle}>{title}</ThemedText>
                 <ThemedView style={styles.petNewsFooter}>
-                    <ThemedText style={styles.petNewsAuthor}>By {author}</ThemedText>
-                    <ThemedText fontSize={"tiny"} style={styles.petNewsDate}>{date} | {time}</ThemedText>
+                    <ThemedText fontSize={"mini"} style={styles.petNewsAuthor}>By {author}</ThemedText>
+                    <ThemedText fontSize={"mini"} style={styles.petNewsDate}>{date} | {time}</ThemedText>
                 </ThemedView>
             </ThemedView>
             <Image source={{ uri: image }} style={styles.petNewsImage} />
@@ -54,14 +54,11 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     petNewsTitle: {
-        fontSize: responsiveSize(16),
         marginBottom: responsiveSize(4),
     },
     petNewsAuthor: {
-        fontSize: responsiveSize(14),
     },
     petNewsDate: {
-        fontSize: responsiveSize(12),
     },
     petNewsFooter: {
         justifyContent: "flex-end",

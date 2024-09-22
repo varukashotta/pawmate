@@ -13,6 +13,9 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+          tabBarLabelStyle: {
+            fontSize: 11
+          }
       }}>
       <Tabs.Screen
         name="index"
@@ -47,6 +50,15 @@ export default function TabLayout() {
                 title: 'My Pets',
                 tabBarIcon: ({ color, focused }) => (
                     <TabBarIcon name={focused ? 'paw' : 'paw-outline'} color={color} />
+                ),
+            }}
+        />
+        <Tabs.Screen
+            name="marketplace"
+            options={{
+                title: 'Marketplace',
+                tabBarIcon: ({ color, focused }) => (
+                    <TabBarIcon name={focused ? 'pricetag' : 'pricetag-outline'} color={color} />
                 ),
             }}
         />

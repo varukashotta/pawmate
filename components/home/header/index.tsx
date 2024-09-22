@@ -23,7 +23,7 @@ const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
 
         <ThemedView style={styles.header}>
             <View style={styles.headerTitleContainer}>
-                <ThemedText fontSize={"large"} fontWeight={"bold"}>Al, Welcome to PetSphere!</ThemedText>
+                <ThemedText fontSize={"title"} fontWeight={"bold"}>Al, Welcome to PetSphere!</ThemedText>
 
                 {/* Booking Alert */}
                 {showBookingAlert && (
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     },
     iconButton: {
         marginLeft: responsiveSize(16),
+        paddingHorizontal: responsiveSize(10)
     },
     badge: {
         position: 'absolute',

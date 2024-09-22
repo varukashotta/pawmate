@@ -1,145 +1,160 @@
+// src/screens/SettingsScreen.tsx
+
 import React from 'react';
-import {View, ScrollView, StyleSheet, TouchableOpacity, Image, Dimensions} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import {ThemedText} from "@/components/ThemedText";
+import { View, Text, SectionList, StyleSheet, TouchableOpacity, Switch, SafeAreaView, SectionListData } from 'react-native';
+import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/ThemedText";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { Colors } from "@/constants/Colors";
+import {responsiveSize} from "@/components/utils/resposive";
 
-// Responsive sizing function
-const responsiveSize = (size: number) => {
-    const { width, height } = Dimensions.get('window');
-    const baseWidth = 375; // Base width for scaling
-    const scale = Math.min(width, height) / baseWidth;
-    return Math.round(size * scale);
-};
-
-interface CategoryButtonProps {
-    iconName: keyof typeof Ionicons.glyphMap;
-    title: string;
-    subtitle: string;
+// Define the type for each item in the sections
+interface SettingsItem {
+    key: string;
+    onPress?: () => void;
+    type?: 'switch';
+    value?: boolean | string;
+    onToggle?: () => void;
 }
 
-const CategoryButton: React.FC<CategoryButtonProps> = ({ iconName, title, subtitle }) => (
-    <TouchableOpacity style={styles.categoryButton}>
-        <Ionicons name={iconName} size={responsiveSize(24)} color="#000" />
-        <ThemedText type="defaultSemiBold" style={styles.categoryTitle}>{title}</ThemedText>
-        <ThemedText type="default" style={styles.categorySubtitle}>{subtitle}</ThemedText>
-    </TouchableOpacity>
-);
-
-interface EventCardProps {
-    image: string;
+// Define the type for each section
+interface SettingsSection {
     title: string;
-    time: string;
+    data: SettingsItem[];
 }
-
-const EventCard: React.FC<EventCardProps> = ({ image, title, time }) => (
-    <View style={styles.eventCard}>
-        <Image source={{ uri: image }} style={styles.eventImage} />
-        <ThemedText type="defaultSemiBold" style={styles.eventTitle}>{title}</ThemedText>
-        <ThemedText type="default" style={styles.eventTime}>{time}</ThemedText>
-    </View>
-);
 
 const SettingsScreen: React.FC = () => {
-    return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView>
-                <View style={styles.header}>
-                    <View style={{width: "80%"}}>
-                        <ThemedText type="title">Al, Welcome to PetSphere!</ThemedText>
-                    </View>
-                    <TouchableOpacity>
-                        <Ionicons name="search" size={responsiveSize(24)} color="#000" />
-                    </TouchableOpacity>
-                </View>
+    const [isPushEnabled, setIsPushEnabled] = React.useState<boolean>(false);
+    const [isEmailEnabled, setIsEmailEnabled] = React.useState<boolean>(false);
 
-                <View style={styles.categoriesContainer}>
-                    <CategoryButton iconName="bed-outline" title="Find a Vet" subtitle="Veterinary" />
-                    <CategoryButton iconName="cut-outline" title="Pet Care" subtitle="Grooming" />
-                    <CategoryButton iconName="people-outline" title="Community" subtitle="Resources" />
-                    <CategoryButton iconName="cart-outline" title="Pet Supplies" subtitle="Marketplace" />
-                </View>
+    const togglePushSwitch = () => setIsPushEnabled(previousState => !previousState);
+    const toggleEmailSwitch = () => setIsEmailEnabled(previousState => !previousState);
 
-                <ThemedText type="subtitle" style={styles.sectionTitle}>Community Events</ThemedText>
-                <ScrollView horizontal style={styles.eventsContainer}>
-                    <EventCard
-                        image="https://picsum.photos/200/300"
-                        title="Cat adoption event"
-                        time="Sun, 2pm"
+    const colorSchemes = useColorScheme();
+
+    const sections: SettingsSection[] = [
+        {
+            title: 'Account Settings',
+            data: [
+                { key: 'Profile', onPress: () => console.log('Profile Pressed') },
+                { key: 'Change Password', onPress: () => console.log('Change Password Pressed') },
+                { key: 'Privacy', onPress: () => console.log('Privacy Pressed') },
+            ],
+        },
+        {
+            title: 'Notifications',
+            data: [
+                { key: 'Push Notifications', type: 'switch', value: isPushEnabled, onToggle: togglePushSwitch },
+                { key: 'Email Notifications', type: 'switch', value: isEmailEnabled, onToggle: toggleEmailSwitch },
+            ],
+        },
+        {
+            title: 'Pet Management',
+            data: [
+                { key: 'Add Pet', onPress: () => console.log('Add Pet Pressed') },
+                { key: 'Edit Pets', onPress: () => console.log('Edit Pets Pressed') },
+            ],
+        },
+        {
+            title: 'Preferences',
+            data: [
+                { key: 'Theme', onPress: () => console.log('Theme Pressed') },
+                { key: 'Language', onPress: () => console.log('Language Pressed') },
+            ],
+        },
+        {
+            title: 'About',
+            data: [
+                { key: 'Terms of Service', onPress: () => console.log('Terms Pressed') },
+                { key: 'Privacy Policy', onPress: () => console.log('Privacy Policy Pressed') },
+                { key: 'App Version', value: '1.0.0' },
+            ],
+        },
+    ];
+
+    const renderItem = ({ item }: { item: SettingsItem }) => {
+        if (item.type === 'switch') {
+            return (
+                <View style={[styles.itemContainer]}>
+                    <ThemedText style={styles.itemText}>{item.key}</ThemedText>
+                    <Switch
+                        onValueChange={item.onToggle}
+                        value={item.value as boolean}
                     />
-                    <EventCard
-                        image="https://picsum.photos/200/300"
-                        title="Dog walking group"
-                        time="Mon, 5pm"
-                    />
-                    <EventCard
-                        image="https://picsum.photos/200/300"
-                        title="Kitty playtime"
-                        time="Tue, 3pm"
-                    />
-                </ScrollView>
-            </ScrollView>
-        </SafeAreaView>
+                </View>
+            );
+        } else if (item.value) {
+            return (
+                <View style={[styles.itemContainer, ]}>
+                    <ThemedText style={styles.itemText}>{item.key}</ThemedText>
+                    <ThemedText style={styles.itemValue}>{item.value}</ThemedText>
+                </View>
+            );
+        } else if (item.onPress) {
+            return (
+                <TouchableOpacity style={[styles.itemContainer]} onPress={item.onPress}>
+                    <ThemedText style={styles.itemText}>{item.key}</ThemedText>
+                </TouchableOpacity>
+            );
+        } else {
+            return null; // Handle cases where neither onPress nor value is provided
+        }
+    };
+
+    const renderSectionHeader = ({ section: { title } }: { section: { title: string } }) => (
+        <ThemedText fontWeight={"bold"} style={styles.sectionHeader}>{title}</ThemedText>
     );
-}
+
+    return (
+        <ThemedView style={styles.container}>
+            <SafeAreaView style={{ flex: 1 }}>
+                <ThemedText fontSize={"title"} fontWeight="bold" style={styles.header}>
+                    Settings
+                </ThemedText>
+                <SectionList
+                    showsVerticalScrollIndicator={false}
+                    sections={sections}
+                    keyExtractor={(item, index) => `${item.key}-${index}`}
+                    renderItem={renderItem}
+                    renderSectionHeader={renderSectionHeader}
+                    ItemSeparatorComponent={() => <View style={[styles.separator, {backgroundColor: Colors[colorSchemes ?? "light"].tabIconDefault}]} />}
+                    stickySectionHeadersEnabled={false}
+                />
+            </SafeAreaView>
+        </ThemedView>
+    );
+};
+
+export default SettingsScreen;
+
+// Styles can remain in the same file or be moved to a separate styles.ts file
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        paddingHorizontal: 16,
     },
     header: {
+        marginBottom: 16,
+    },
+    sectionHeader: {
+        paddingVertical: 8,
+        marginTop: 16,
+        borderRadius: 8,
+    },
+    itemContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: responsiveSize(16),
+        paddingVertical: responsiveSize(16),
+        paddingHorizontal: 16,
     },
-    title: {
-        fontSize: responsiveSize(38),
+    itemText: {
     },
-    categoriesContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        padding: responsiveSize(16),
+    itemValue: {
     },
-    categoryButton: {
-        width: '48%',
-        backgroundColor: '#fff',
-        padding: responsiveSize(16),
-        borderRadius: responsiveSize(8),
-        marginBottom: responsiveSize(16),
-        borderWidth: 1,
-        borderColor: "#e1e1e1",
-        height: Dimensions.get("window").height / 8
-    },
-    categoryTitle: {
-        marginTop: responsiveSize(8),
-    },
-    categorySubtitle: {
-        color: '#666',
-    },
-    sectionTitle: {
-        padding: responsiveSize(16),
-    },
-    eventsContainer: {
-        paddingLeft: responsiveSize(16),
-    },
-    eventCard: {
-        marginRight: responsiveSize(16),
-        width: responsiveSize(150),
-    },
-    eventImage: {
-        width: responsiveSize(150),
-        height: responsiveSize(150),
-        borderRadius: responsiveSize(8),
-    },
-    eventTitle: {
-        marginTop: responsiveSize(8),
-    },
-    eventTime: {
-        color: '#666',
+    separator: {
+        height: 1,
+        marginLeft: 16,
     },
 });
-
-export default SettingsScreen;
