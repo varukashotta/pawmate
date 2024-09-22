@@ -20,8 +20,8 @@ export default function NotificationsScreen() {
         <TouchableOpacity style={[styles.notificationRow, {borderColor: Colors[colorScheme ?? 'light'].tabIconDefault}]} onPress={() => alert(`Clicked on: ${item.text}`)}>
             <Image source={{ uri: item.image }} style={styles.image} />
             <View style={styles.textContainer}>
-                <ThemedText>{item.text}</ThemedText>
-                <ThemedText type="tiny">{item.time}</ThemedText>
+                <ThemedText fontSize={"small"}>{item.text}</ThemedText>
+                <ThemedText fontSize={"tiny"} fontWeight={"light"}>{item.time}</ThemedText>
             </View>
         </TouchableOpacity>
     );

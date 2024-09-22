@@ -104,7 +104,7 @@ const VetSearchFilter: React.FC = () => {
     return (
         <ThemedView style={styles.container}>
             {/* Location Input/Tag */}
-            <ThemedText style={[styles.label]} type="subtitle">
+            <ThemedText style={[styles.label]} fontSize={"large"} fontWeight={"bold"}>
                 Enter Location
             </ThemedText>
             {editLocation || !location ? (
@@ -121,7 +121,7 @@ const VetSearchFilter: React.FC = () => {
             )}
 
             {/* Date Picker */}
-            <ThemedText style={[styles.label]} type="subtitle">
+            <ThemedText style={[styles.label]} fontSize={"large"} fontWeight={"bold"}>
                 Select Date
             </ThemedText>
             <DateTimePicker
@@ -133,7 +133,7 @@ const VetSearchFilter: React.FC = () => {
             />
 
             {/* Service Type Selection */}
-            <ThemedText style={[styles.label]} type="subtitle">
+            <ThemedText style={[styles.label]} fontSize={"large"} fontWeight={"bold"}>
                 Type of Service
             </ThemedText>
             {!editServiceType && selectedServiceType ? (

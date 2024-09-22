@@ -43,10 +43,10 @@ export function ThemedText({
             case 'mini': return responsiveSize(12);
             case 'tiny': return responsiveSize(14);
             case 'small': return responsiveSize(16);
-            case 'default': return responsiveSize(18);
+            case 'default': return responsiveSize(16);
             case 'large': return responsiveSize(24);
             case 'title': return responsiveSize(32);
-            default: return responsiveSize(18);
+            default: return responsiveSize(16);
         }
     };
 

@@ -11,12 +11,12 @@ interface INotification {
 const Notification: FC<INotification> = ({setShowBookingAlert}) => {
     return (<View style={styles.bookingAlert}>
             <View style={styles.bookingAlertTextContainer}>
-                <ThemedText style={styles.bookingAlertText}>
+                <ThemedText fontSize={"tiny"}  style={styles.bookingAlertText}>
                     No Upcoming Bookings -
                 </ThemedText>
                 <TouchableOpacity onPress={() => {/* Navigate to booking screen */
                 }}>
-                    <ThemedText style={[styles.bookingAlertText, styles.bookingAlertLink]}>
+                    <ThemedText fontSize={"tiny"} style={[styles.bookingAlertText, styles.bookingAlertLink]}>
                         {' '}
                         Book Now
                     </ThemedText>
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     },
     bookingAlertText: {
         color: '#fff',
-        fontSize: responsiveSize(14),
     },
     bookingAlertLink: {
         textDecorationLine: 'underline',

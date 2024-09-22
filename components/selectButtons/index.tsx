@@ -21,7 +21,7 @@ const SelectButton:FC<ISelectedButtons> = ({label, isSelected, onPress}) => {
             ]}
             onPress={onPress}
         >
-            <ThemedText style={[styles.buttonText]}>
+            <ThemedText fontSize={"small"} style={[styles.buttonText]}>
                 {label}
             </ThemedText>
         </TouchableOpacity>
