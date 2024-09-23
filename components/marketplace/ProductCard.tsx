@@ -1,4 +1,4 @@
-// components/ProductCard.js
+// components/ProductCard.tsx
 
 import React from 'react';
 import {
@@ -10,7 +10,19 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const ProductCard = ({ product, onPress }) => {
+interface Product {
+    image: string;
+    name: string;
+    price: string;
+    rating: number;
+}
+
+interface ProductCardProps {
+    product: Product;
+    onPress: (product: Product) => void;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product, onPress }) => {
     return (
         <TouchableOpacity style={styles.card} onPress={() => onPress(product)}>
             <Image

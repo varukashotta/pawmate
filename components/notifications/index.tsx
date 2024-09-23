@@ -28,7 +28,7 @@ const Notification: FC<INotification> = ({setShowBookingAlert}) => {
                 </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={() => setShowBookingAlert(false)}>
-                <Ionicons name="close" size={responsiveSize(20)} color="#fff"/>
+                <Ionicons name="close" size={responsiveSize(20)} color={Colors[colorSchem ?? "light"].buttonText}/>
             </TouchableOpacity>
         </ThemedView>
     )

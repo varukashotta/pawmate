@@ -1,68 +1,74 @@
-// components/CommunityPost.js
-
 import React from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     TouchableOpacity,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/ThemedText";
+import {useColorScheme} from "@/hooks/useColorScheme";
+import {Colors} from "@/constants/Colors";
 
-const CommunityPost = ({ post }) => {
+// Define the types for the post prop
+interface Post {
+    title: string;
+    category: string;
+    author: string;
+    date: string;
+    content: string;
+    upvotes: number;
+    comments: number;
+}
+
+interface CommunityPostProps {
+    post: Post;
+}
+
+const CommunityPost: React.FC<CommunityPostProps> = ({ post }) => {
+    const colorSchemes = useColorScheme();
+
     return (
-        <View style={styles.card}>
+        <ThemedView style={[styles.card, {borderBottomColor: Colors[colorSchemes ?? "light"].tabIconDefault}]}>
             <View style={styles.header}>
-                <Text style={styles.title}>{post.title}</Text>
-                <Text style={styles.category}>{post.category}</Text>
+                <ThemedText fontSize={"tiny"} style={styles.title}>{post.title}</ThemedText>
+                <ThemedText fontSize={"tiny"} style={styles.category}>{post.category}</ThemedText>
             </View>
             <View style={styles.meta}>
-                <Text style={styles.author}>by {post.author}</Text>
-                <Text style={styles.date}>{post.date}</Text>
+                <ThemedText fontSize={"tiny"} style={styles.author}>by {post.author}</ThemedText>
+                <ThemedText fontSize={"tiny"} style={styles.date}>{post.date}</ThemedText>
             </View>
-            <Text style={styles.content}>{post.content}</Text>
+            <ThemedText style={styles.content}>{post.content}</ThemedText>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButton}>
-                    <Ionicons name="arrow-up-outline" size={20} color="#1da1f2" />
-                    <Text style={styles.footerText}>{post.upvotes}</Text>
+                    <Ionicons name="arrow-up-outline" size={20} color={Colors[colorSchemes ?? "light"].tint} />
+                    <ThemedText fontSize={"tiny"} style={styles.footerText}>{post.upvotes}</ThemedText>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButton}>
-                    <Ionicons name="chatbubble-outline" size={20} color="#1da1f2" />
-                    <Text style={styles.footerText}>{post.comments}</Text>
+                    <Ionicons name="chatbubble-outline" size={20} color={Colors[colorSchemes ?? "light"].tint} />
+                    <ThemedText fontSize={"tiny"} style={styles.footerText}>{post.comments}</ThemedText>
                 </TouchableOpacity>
             </View>
-        </View>
+        </ThemedView>
     );
 };
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#fff',
         padding: 15,
-        marginHorizontal: 15,
-        marginVertical: 8,
-        borderRadius: 10,
-        // iOS shadow
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        // Android shadow
-        elevation: 3,
+        // marginHorizontal: 15,
+        // marginVertical: 8,
+        borderBottomWidth: 1
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     title: {
-        fontSize: 16,
-        fontWeight: 'bold',
         flex: 1,
         marginRight: 10,
     },
     category: {
-        fontSize: 12,
-        color: '#1da1f2',
         alignSelf: 'center',
     },
     meta: {
@@ -70,17 +76,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginVertical: 5,
     },
-    author: {
-        fontSize: 14,
-        color: '#555',
-    },
-    date: {
-        fontSize: 12,
-        color: '#999',
-    },
+    author: {},
+    date: {},
     content: {
-        fontSize: 14,
-        color: '#333',
         marginVertical: 10,
     },
     footer: {
@@ -93,7 +91,6 @@ const styles = StyleSheet.create({
     },
     footerText: {
         marginLeft: 5,
-        color: '#1da1f2',
     },
 });
 

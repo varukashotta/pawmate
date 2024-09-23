@@ -42,7 +42,7 @@ const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
                         <Ionicons name="notifications-outline" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].icon}/>
                         {/* Notification Badge */}
                         <View style={[styles.badge,  {backgroundColor: Colors[colorScheme ?? 'light'].buttonBg }]}>
-                            <Text style={styles.badgeText}>5</Text>
+                            <Text style={[styles.badgeText, {color: Colors[colorScheme ?? "light"].buttonText}]}>5</Text>
                         </View>
                     </View>
                 </TouchableOpacity>

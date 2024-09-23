@@ -1,4 +1,4 @@
-// screens/MarketplaceScreen.js
+// screens/MarketplaceScreen.tsx
 
 import React, { useState } from 'react';
 import {
@@ -12,34 +12,48 @@ import {
 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import {products, productCategories} from "@/assets/data/marketplace";
+import { products, productCategories } from "@/assets/data/marketplace";
 import CategoryItem from "@/components/community/CategoryItem";
 import ProductCard from "@/components/marketplace/ProductCard";
 
-const MarketplaceScreen = () => {
+interface Product {
+    id: string;
+    name: string;
+    category: string;
+    image: string;
+    price: string;
+    rating: number;
+}
+
+interface Category {
+    id: string;
+    name: string;
+    icon: string;
+}
+
+const MarketplaceScreen: React.FC = () => {
     const navigation = useNavigation();
-    const [selectedCategory, setSelectedCategory] = useState('all'); // Default to 'All'
-    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState<string>('all');
+    const [searchQuery, setSearchQuery] = useState<string>('');
 
     // Filter products based on selected category and search query
-    const filteredProducts = products.filter((product) => {
+    const filteredProducts = products.filter((product: Product) => {
         const matchesCategory =
             selectedCategory === 'all' ||
             product.category ===
-            productCategories.find((cat) => cat.id === selectedCategory).name;
-        const matchesSearch =
-            product.name.toLowerCase().includes(searchQuery.toLowerCase());
+            productCategories.find((cat: Category) => cat.id === selectedCategory)?.name;
+        const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
     });
 
     // Handle category selection
-    const handleCategoryPress = (categoryId) => {
+    const handleCategoryPress = (categoryId: string) => {
         setSelectedCategory(categoryId);
     };
 
     // Handle product press (navigate to product details)
-    const handleProductPress = (product) => {
-        navigation.navigate('ProductDetail', { product });
+    const handleProductPress = (product: Product) => {
+        // navigation.navigate('ProductDetail', { product });
     };
 
     return (
