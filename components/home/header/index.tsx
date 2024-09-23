@@ -34,7 +34,7 @@ const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
             {/* Icons */}
             <View style={styles.headerIconsContainer}>
                 <TouchableOpacity style={styles.iconButton}>
-                    <Ionicons name="search" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].icon}/>
+                    <Ionicons name="search-outline" size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].icon}/>
                 </TouchableOpacity>
                 <Link href="/notifications" asChild>
                 <TouchableOpacity style={[styles.iconButton]}>

@@ -218,7 +218,7 @@ export const communityPosts = [
         author: 'Xander',
         upvotes: 190,
         comments: 85,
-        content: 'What’s the best feeding schedule for dogs? Twice a day or more?',
+        content: 'What’s the best feeding comment for dogs? Twice a day or more?',
         date: 'August 30, 2024',
     },
     {
