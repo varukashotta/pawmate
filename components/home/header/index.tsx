@@ -25,7 +25,7 @@ const Header:FC<IHeader> = ({showBookingAlert, setShowBookingAlert}) => {
             <View style={styles.headerTitleContainer}>
                 <ThemedText fontSize={"title"} fontWeight={"bold"}>Al, Welcome to PetSphere!</ThemedText>
 
-                {/* Booking Alert */}
+                {/* Schedule Alert */}
                 {showBookingAlert && (
                     <Notification setShowBookingAlert={setShowBookingAlert}/>
                 )}

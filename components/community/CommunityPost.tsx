@@ -31,22 +31,22 @@ const CommunityPost: React.FC<CommunityPostProps> = ({ post }) => {
     return (
         <ThemedView style={[styles.card, {borderBottomColor: Colors[colorSchemes ?? "light"].tabIconDefault}]}>
             <View style={styles.header}>
-                <ThemedText fontSize={"tiny"} style={styles.title}>{post.title}</ThemedText>
-                <ThemedText fontSize={"tiny"} style={styles.category}>{post.category}</ThemedText>
+                <ThemedText fontSize={"small"} style={styles.title}>{post.title}</ThemedText>
+                <ThemedText fontSize={"small"} style={styles.category}>{post.category}</ThemedText>
             </View>
             <View style={styles.meta}>
-                <ThemedText fontSize={"tiny"} style={styles.author}>by {post.author}</ThemedText>
-                <ThemedText fontSize={"tiny"} style={styles.date}>{post.date}</ThemedText>
+                <ThemedText fontSize={"small"} style={styles.author}>by {post.author}</ThemedText>
+                <ThemedText fontSize={"small"} style={styles.date}>{post.date}</ThemedText>
             </View>
             <ThemedText style={styles.content}>{post.content}</ThemedText>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButton}>
                     <Ionicons name="arrow-up-outline" size={20} color={Colors[colorSchemes ?? "light"].tint} />
-                    <ThemedText fontSize={"tiny"} style={styles.footerText}>{post.upvotes}</ThemedText>
+                    <ThemedText fontSize={"small"} style={styles.footerText}>{post.upvotes}</ThemedText>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButton}>
                     <Ionicons name="chatbubble-outline" size={20} color={Colors[colorSchemes ?? "light"].tint} />
-                    <ThemedText fontSize={"tiny"} style={styles.footerText}>{post.comments}</ThemedText>
+                    <ThemedText fontSize={"small"} style={styles.footerText}>{post.comments}</ThemedText>
                 </TouchableOpacity>
             </View>
         </ThemedView>

@@ -1,4 +1,4 @@
-// Booking.tsx
+// Schedule.tsx
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {ThemedView} from '@/components/ThemedView';
@@ -15,7 +15,7 @@ interface Appointment {
     date: string;
 }
 
-const Booking: React.FC = () => {
+const Schedule: React.FC = () => {
     const tabs = [
         {
             label: 'Upcoming',
@@ -26,7 +26,7 @@ const Booking: React.FC = () => {
                     renderItem={(item: Appointment) => (
                         <>
                             <ThemedText fontWeight="semiBold">{item.title}</ThemedText>
-                            <ThemedText fontWeight="light" fontSize="mini">{item.date}</ThemedText>
+                            <ThemedText fontWeight="light" fontSize="small">{item.date}</ThemedText>
                         </>
                     )}
                 />
@@ -41,7 +41,7 @@ const Booking: React.FC = () => {
                     renderItem={(item: Appointment) => (
                         <>
                             <ThemedText fontWeight="semiBold">{item.title}</ThemedText>
-                            <ThemedText fontWeight="light" fontSize="mini">{item.date}</ThemedText>
+                            <ThemedText fontWeight="light" fontSize="small">{item.date}</ThemedText>
                         </>
                     )}
                 />
@@ -56,7 +56,7 @@ const Booking: React.FC = () => {
                     renderItem={(item: Appointment) => (
                         <>
                             <ThemedText fontWeight="semiBold">{item.title}</ThemedText>
-                            <ThemedText fontWeight="light" fontSize="mini">{item.date}</ThemedText>
+                            <ThemedText fontWeight="light" fontSize="small">{item.date}</ThemedText>
                         </>
                     )}
                 />
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Booking;
+export default Schedule;

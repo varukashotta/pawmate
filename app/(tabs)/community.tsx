@@ -9,7 +9,7 @@ import {ThemedView} from "@/components/ThemedView";
 
 
 const CommunityScreen = () => {
-    const [selectedCategory, setSelectedCategory] = useState('1'); // Default to first category
+    const [selectedCategory, setSelectedCategory] = useState<string>('1'); // Default to first category
 
     // Filter posts based on selected category
     const filteredPosts = communityPosts.filter(

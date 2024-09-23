@@ -16,12 +16,12 @@ const Notification: FC<INotification> = ({setShowBookingAlert}) => {
 
     return (<ThemedView style={[styles.bookingAlert, {backgroundColor: Colors[colorSchem ?? "light"].buttonBg}]}>
             <View style={styles.bookingAlertTextContainer}>
-                <ThemedText fontSize={"tiny"}  style={[styles.bookingAlertText, {color: Colors[colorSchem ?? "light"].buttonText}]}>
+                <ThemedText fontSize={"small"}  style={[styles.bookingAlertText, {color: Colors[colorSchem ?? "light"].buttonText}]}>
                     No Upcoming Bookings -
                 </ThemedText>
                 <TouchableOpacity onPress={() => {/* Navigate to booking screen */
                 }}>
-                    <ThemedText fontSize={"tiny"} style={[styles.bookingAlertText, styles.bookingAlertLink, {color: Colors[colorSchem ?? "light"].buttonText}]}>
+                    <ThemedText fontSize={"small"} style={[styles.bookingAlertText, styles.bookingAlertLink, {color: Colors[colorSchem ?? "light"].buttonText}]}>
                         {' '}
                         Book Now
                     </ThemedText>

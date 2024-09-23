@@ -1,15 +1,55 @@
-// App.js
+// App.tsx
 
-import React, {useState} from 'react';
-import {Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
-import {ThemedView} from "@/components/ThemedView";
-import {ThemedText} from "@/components/ThemedText";
+import React, { useState } from 'react';
+import {
+    Dimensions,
+    FlatList,
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    ImageErrorEventData,
+    NativeSyntheticEvent,
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText';
+import {returnStatement} from "@babel/types";
+import {useColorScheme} from "@/hooks/useColorScheme";
+import {Colors} from "@/constants/Colors";
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
+
+// Types for User, Pet, and Post
+interface Pet {
+    id: string;
+    name: string;
+    type: string;
+    age: string;
+    photo: string;
+    isFollowing: boolean;
+}
+
+interface Post {
+    id: string;
+    content: string;
+    image: string | null;
+    date: string;
+}
+
+interface User {
+    name: string;
+    bio: string;
+    profilePicture: string;
+    coverPhoto: string;
+    pets: Pet[];
+    posts: Post[];
+}
 
 // Dummy Data
-const initialUser = {
+const initialUser: User = {
     name: 'Jane Doe',
     bio: 'Passionate pet lover and proud owner of two adorable cats.',
     profilePicture:
@@ -24,7 +64,7 @@ const initialUser = {
             age: '2 years',
             photo:
                 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNjA3fDB8MHxzZWFyY2h8Mnx8Y2F0c3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&q=80&w=400',
-            isFollowing: false, // Initial follow status
+            isFollowing: false,
         },
         {
             id: '2',
@@ -33,7 +73,7 @@ const initialUser = {
             age: '3 years',
             photo:
                 'https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNjA3fDB8MHxzZWFyY2h8Mnx8ZG9nfGVufDB8MHx8fA%3D%3D&ixlib=rb-1.2.1&q=80&w=400',
-            isFollowing: false, // Initial follow status
+            isFollowing: false,
         },
     ],
     posts: [
@@ -57,21 +97,24 @@ const initialUser = {
 const placeholderImage =
     'https://via.placeholder.com/150';
 
-const Header = ({profilePicture}) => (
+interface HeaderProps {
+    profilePicture: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ profilePicture }) => (
     <View style={styles.headerContainer}>
-        <Image source={{uri: initialUser.coverPhoto}} style={styles.coverPhoto}/>
+        <Image source={{ uri: initialUser.coverPhoto }} style={styles.coverPhoto} />
         <View style={styles.profilePictureContainer}>
             <Image
-                source={{uri: profilePicture}}
+                source={{ uri: profilePicture }}
                 style={styles.profilePicture}
-                onError={(e) => {
-                    // Handle image load error by using a placeholder
+                onError={(e: NativeSyntheticEvent<ImageErrorEventData>) => {
                     console.log('Profile picture failed to load:', e.nativeEvent.error);
                 }}
-                defaultSource={{uri: placeholderImage}}
+                defaultSource={{ uri: placeholderImage }}
             />
         </View>
-        <ThemedText style={styles.userName}>{initialUser.name}</ThemedText>
+        <ThemedText fontSize={"header"} fontWeight={"bold"} style={styles.userName}>{initialUser.name}</ThemedText>
         <ThemedText style={styles.userBio}>{initialUser.bio}</ThemedText>
         <View style={styles.statsContainer}>
             <View style={styles.stat}>
@@ -86,31 +129,38 @@ const Header = ({profilePicture}) => (
     </View>
 );
 
-const AboutSection = () => (
-    <ThemedView style={styles.sectionContainer}>
-        <ThemedText style={styles.sectionTitle}>About</ThemedText>
+const AboutSection: React.FC = () => {
+    const colorScheme = useColorScheme();
+
+    return(
+    <ThemedView style={[styles.sectionContainer, {backgroundColor: Colors[colorScheme ?? "light"].cardBg}]}>
+        <ThemedText fontSize={"header"} style={styles.sectionTitle}>About</ThemedText>
         <ThemedText style={styles.sectionContent}>{initialUser.bio}</ThemedText>
     </ThemedView>
-);
+)};
 
-const PetsSection = ({pets, toggleFollow}) => (
-    <View style={styles.sectionContainer}>
-        <ThemedText style={styles.sectionTitle}>My Pets</ThemedText>
+interface PetsSectionProps {
+    pets: Pet[];
+    toggleFollow: (petId: string) => void;
+}
+
+const PetsSection: React.FC<PetsSectionProps> = ({ pets, toggleFollow }) => (
+    <ThemedView style={[styles.sectionContainer]}>
+        <ThemedText fontSize={"header"} style={styles.sectionTitle}>My Pets</ThemedText>
         <FlatList
             data={pets}
             keyExtractor={(item) => item.id}
             horizontal
             showsHorizontalScrollIndicator={false}
-            renderItem={({item}) => (
+            renderItem={({ item }) => (
                 <View style={styles.petCard}>
                     <Image
-                        source={{uri: item.photo}}
+                        source={{ uri: item.photo }}
                         style={styles.petPhoto}
-                        onError={(e) => {
-                            // Handle image load error by using a placeholder
+                        onError={(e: NativeSyntheticEvent<ImageErrorEventData>) => {
                             console.log(`Pet photo for ${item.name} failed to load:`, e.nativeEvent.error);
                         }}
-                        defaultSource={{uri: placeholderImage}}
+                        defaultSource={{ uri: placeholderImage }}
                     />
                     <ThemedText style={styles.petName}>{item.name}</ThemedText>
                     <ThemedText style={styles.petDetails}>
@@ -135,20 +185,23 @@ const PetsSection = ({pets, toggleFollow}) => (
                 </View>
             )}
         />
-    </View>
+    </ThemedView>
 );
 
-const PostCard = ({item}) => (
+interface PostCardProps {
+    item: Post;
+}
+
+const PostCard: React.FC<PostCardProps> = ({ item }) => (
     <View style={styles.postCard}>
         <View style={styles.postHeader}>
             <Image
-                source={{uri: initialUser.profilePicture}}
+                source={{ uri: initialUser.profilePicture }}
                 style={styles.postProfilePic}
-                onError={(e) => {
-                    // Handle image load error by using a placeholder
+                onError={(e: NativeSyntheticEvent<ImageErrorEventData>) => {
                     console.log('Post profile picture failed to load:', e.nativeEvent.error);
                 }}
-                defaultSource={{uri: placeholderImage}}
+                defaultSource={{ uri: placeholderImage }}
             />
             <View>
                 <ThemedText style={styles.postUserName}>{initialUser.name}</ThemedText>
@@ -157,48 +210,42 @@ const PostCard = ({item}) => (
         </View>
         <ThemedText style={styles.postContent}>{item.content}</ThemedText>
         {item.image && (
-            <Image source={{uri: item.image}} style={styles.postImage}/>
+            <Image source={{ uri: item.image }} style={styles.postImage} />
         )}
         <View style={styles.postFooter}>
-            <Ionicons name="heart-outline" size={24} color="gray"/>
+            <Ionicons name="heart-outline" size={24} color="gray" />
             <Ionicons
                 name="chatbubble-outline"
                 size={24}
                 color="gray"
-                style={{marginLeft: 15}}
+                style={{ marginLeft: 15 }}
             />
             <Ionicons
                 name="share-social-outline"
                 size={24}
                 color="gray"
-                style={{marginLeft: 15}}
+                style={{ marginLeft: 15 }}
             />
         </View>
     </View>
 );
 
-const ProfilePage = () => {
-    const [user, setUser] = useState(initialUser);
+const ProfilePage: React.FC = () => {
+    const [user, setUser] = useState<User>(initialUser);
 
     // Function to toggle follow status for a pet
-    const toggleFollow = (petId) => {
+    const toggleFollow = (petId: string) => {
         const updatedPets = user.pets.map((pet) =>
-            pet.id === petId ? {...pet, isFollowing: !pet.isFollowing} : pet
+            pet.id === petId ? { ...pet, isFollowing: !pet.isFollowing } : pet
         );
-        setUser({...user, pets: updatedPets});
+        setUser({ ...user, pets: updatedPets });
     };
 
-    // Function to handle profile picture error
-    const handleProfilePicError = () => {
-        // Optionally set a default profile picture if the main one fails
-    };
-
-    // Combine non-scrollable sections into a single header component
-    const ListHeader = () => (
+    const ListHeader: React.FC = () => (
         <>
-            <Header profilePicture={user.profilePicture}/>
-            <AboutSection/>
-            <PetsSection pets={user.pets} toggleFollow={toggleFollow}/>
+            <Header profilePicture={user.profilePicture} />
+            <AboutSection />
+            <PetsSection pets={user.pets} toggleFollow={toggleFollow} />
         </>
     );
 
@@ -209,7 +256,7 @@ const ProfilePage = () => {
                     data={user.posts}
                     keyExtractor={(item) => item.id}
                     ListHeaderComponent={ListHeader}
-                    renderItem={({item}) => <PostCard item={item}/>}
+                    renderItem={({ item }) => <PostCard item={item} />}
                     showsVerticalScrollIndicator={false}
                 />
             </SafeAreaView>
@@ -218,10 +265,7 @@ const ProfilePage = () => {
 };
 
 // Main App
-export default function App() {
-    return <ProfilePage/>;
-}
-
+export default ProfilePage;
 // Styles
 const styles = StyleSheet.create({
     container: {

@@ -9,6 +9,10 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import {ThemedView} from "@/components/ThemedView";
+import {ThemedText} from "@/components/ThemedText";
+import {useColorScheme} from "@/hooks/useColorScheme";
+import {Colors} from "@/constants/Colors";
 
 interface Product {
     image: string;
@@ -23,6 +27,8 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onPress }) => {
+    const colorSchemes = useColorScheme();
+
     return (
         <TouchableOpacity style={styles.card} onPress={() => onPress(product)}>
             <Image
@@ -30,31 +36,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onPress }) => {
                 style={styles.image}
                 resizeMode="cover"
             />
-            <View style={styles.infoContainer}>
-                <Text style={styles.name} numberOfLines={1}>
+            <ThemedView style={[styles.infoContainer, {backgroundColor: Colors[colorSchemes ?? "light"].cardBg}]}>
+                <ThemedText style={styles.name} numberOfLines={1}>
                     {product.name}
-                </Text>
-                <Text style={styles.price}>{product.price}</Text>
+                </ThemedText>
+                <ThemedText fontSize={"small"} style={styles.price}>{product.price}</ThemedText>
                 <View style={styles.ratingContainer}>
                     <Ionicons name="star" size={14} color="#FFD700" />
-                    <Text style={styles.ratingText}>{product.rating}</Text>
+                    <ThemedText style={styles.ratingText}>{product.rating}</ThemedText>
                 </View>
-            </View>
+            </ThemedView>
         </TouchableOpacity>
     );
 };
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#fff',
         borderRadius: 10,
         overflow: 'hidden',
         marginBottom: 15,
-        elevation: 3, // Android shadow
-        shadowColor: '#000', // iOS shadow
-        shadowOffset: { width: 0, height: 2 }, // iOS shadow
-        shadowOpacity: 0.1, // iOS shadow
-        shadowRadius: 5, // iOS shadow
         flex: 1,
         margin: 5,
     },
@@ -67,13 +67,9 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     name: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        color: '#333',
+
     },
     price: {
-        fontSize: 14,
-        color: '#1da1f2',
         marginVertical: 5,
     },
     ratingContainer: {
@@ -82,8 +78,6 @@ const styles = StyleSheet.create({
     },
     ratingText: {
         marginLeft: 5,
-        fontSize: 12,
-        color: '#555',
     },
 });
 

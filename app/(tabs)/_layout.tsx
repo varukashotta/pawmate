@@ -27,7 +27,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="booking"
+        name="schedule"
         options={{
           title: 'Schedule',
           tabBarIcon: ({ color, focused }) => (
@@ -45,7 +45,7 @@ export default function TabLayout() {
             }}
         />
         <Tabs.Screen
-            name="pets"
+            name="profile"
             options={{
                 title: 'My Pets',
                 tabBarIcon: ({ color, focused }) => (

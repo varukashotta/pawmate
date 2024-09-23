@@ -17,12 +17,12 @@ const CategoryButton: FC<CategoryButtonProps> = ({ iconName, title, subtitle, de
         <TouchableOpacity onPress={() => categoryClicked(title)} style={[styles.categoryButton, {borderColor: Colors[colorScheme ?? "light"].tabIconDefault}]}>
             <ThemedView style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
                 <View>
-                    <ThemedText fontWeight={"semiBold"} fontSize={"small"}  style={styles.categoryTitle}>{title}</ThemedText>
-                    <ThemedText fontSize={"tiny"} style={styles.categorySubtitle}>{subtitle}</ThemedText>
+                    <ThemedText fontWeight={"semiBold"}   style={styles.categoryTitle}>{title}</ThemedText>
+                    <ThemedText fontSize={"small"} style={styles.categorySubtitle}>{subtitle}</ThemedText>
                 </View>
                 <Ionicons name={iconName} size={responsiveSize(24)} color={Colors[colorScheme ?? 'light'].icon} />
             </ThemedView>
-            <ThemedText fontSize={"tiny"} style={styles.categorySubtitle}>{truncateText(description, 30)}</ThemedText>
+            <ThemedText fontSize={"small"} style={styles.categorySubtitle}>{truncateText(description, 30)}</ThemedText>
         </TouchableOpacity>
     );
 }

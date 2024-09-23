@@ -1,6 +1,4 @@
-// components/CategoryItem.tsx
-
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import {
     TouchableOpacity,
     StyleSheet,
@@ -22,7 +20,7 @@ interface Category {
 interface CategoryItemProps {
     category: Category;
     isSelected: boolean;
-    onPress: (id: string | number) => void;
+    onPress: Dispatch<SetStateAction<string>>; // Updated type
 }
 
 const CategoryItem: React.FC<CategoryItemProps> = ({
@@ -34,12 +32,12 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
 
     // Determine the icon color based on selection and color scheme
     const iconColor = isSelected
-        ? Colors[colorScheme ?? 'light'].icon
+        ? Colors[colorScheme ?? 'light'].icon // You can use different color for selected
         : Colors[colorScheme ?? 'light'].icon;
 
     // Handle the press event
     const handlePress = (event: GestureResponderEvent) => {
-        onPress(category.id);
+        onPress(category.id); // Category id might be number or string
     };
 
     return (
@@ -52,7 +50,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
         >
             <Ionicons name={category.icon} size={24} color={iconColor} />
             <ThemedText
-                fontSize="mini"
+                fontSize="small"
                 style={[
                     styles.text,
                 ]}

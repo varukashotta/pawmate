@@ -14,7 +14,7 @@ import {responsiveSize} from "@/components/utils/resposive";
 export type ThemedTextProps = TextProps & {
     lightColor?: string;
     darkColor?: string;
-    fontSize?: 'mini' | 'tiny' | 'small' | 'default' | 'large' | 'title';
+    fontSize?: 'mini' | 'tiny' | 'small' | 'default' | 'header' | 'large' | 'title';
     fontWeight?: 'light' | 'regular' | 'medium' | 'semiBold' | 'bold' | 'extraBold';
 };
 
@@ -40,13 +40,14 @@ export function ThemedText({
     // Map the fontSize prop to responsive sizes
     const getFontSize = () => {
         switch (fontSize) {
-            case 'mini': return responsiveSize(12);
-            case 'tiny': return responsiveSize(14);
-            case 'small': return responsiveSize(16);
-            case 'default': return responsiveSize(16);
+            case 'mini': return responsiveSize(8);
+            case 'tiny': return responsiveSize(10);
+            case 'small': return responsiveSize(12);
+            case 'default': return responsiveSize(14);
+            case 'header': return responsiveSize(16);
             case 'large': return responsiveSize(24);
             case 'title': return responsiveSize(32);
-            default: return responsiveSize(16);
+            default: return responsiveSize(14);
         }
     };
 

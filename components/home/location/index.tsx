@@ -49,11 +49,11 @@ const FeaturedLocation = () => (
             {/* Info Overlay */}
             <View style={styles.infoContainer}>
                 <View style={styles.infoTextContainer}>
-                    <ThemedText fontSize={"small"} style={styles.locationTitle}>
+                    <ThemedText  style={styles.locationTitle}>
                         Dog's Favorite Beach
                     </ThemedText>
                     <CustomStarRating rating={5} />
-                    <ThemedText fontSize={"tiny"}  style={styles.locationDistance}>
+                    <ThemedText fontSize={"small"}  style={styles.locationDistance}>
                         5 min away
                     </ThemedText>
                 </View>

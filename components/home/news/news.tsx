@@ -26,8 +26,8 @@ const PetNewsCard: React.FC<PetNewsCardProps> = ({ image, title, author, date, t
             <View style={[styles.textContainer]}>
                 <ThemedText fontWeight={"semiBold"} style={styles.petNewsTitle}>{title}</ThemedText>
                 <View style={styles.petNewsFooter}>
-                    <ThemedText fontSize={"mini"} style={styles.petNewsAuthor}>By {author}</ThemedText>
-                    <ThemedText fontSize={"mini"} style={styles.petNewsDate}>{date} | {time}</ThemedText>
+                    <ThemedText fontSize={"tiny"} style={styles.petNewsAuthor}>By {author}</ThemedText>
+                    <ThemedText fontSize={"tiny"} style={styles.petNewsDate}>{date} | {time}</ThemedText>
                 </View>
             </View>
             <Image source={{ uri: image }} style={styles.petNewsImage} />
