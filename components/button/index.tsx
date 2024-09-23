@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Colors} from "@/constants/Colors";
 import {ThemedText} from "@/components/ThemedText";
+import {useColorScheme} from "@/hooks/useColorScheme";
 
 
 interface IButton {
@@ -17,17 +18,18 @@ const Button: FC<IButton> = ({
                                  size = 'default',  // Default button size, can be 'default', 'large', 'small'
                                  customStyles = {}, // Optional custom styles
                              }) => {
+    const colorSchemes = useColorScheme();
     // Define the styles for different button sizes
     const buttonStyles = [
         styles.submitButton,
         size === 'large' ? styles.large : size === 'small' ? styles.small : styles.default,
-        {backgroundColor: Colors['light'].buttonBg},
+        {backgroundColor: Colors[colorSchemes ?? 'light'].buttonBg},
         customStyles,
     ];
 
     return (
         <TouchableOpacity style={buttonStyles} onPress={onPress}>
-            <ThemedText fontWeight={"semiBold"} style={{color: "#fff"}}>{title}</ThemedText>
+            <ThemedText fontWeight={"semiBold"} style={{color:Colors[colorSchemes ?? 'light'].buttonText}}>{title}</ThemedText>
         </TouchableOpacity>
     );
 };

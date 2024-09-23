@@ -31,6 +31,5 @@ const styles = StyleSheet.create({
         marginTop: responsiveSize(8),
     },
     eventTime: {
-        color: '#666',
     },
 })

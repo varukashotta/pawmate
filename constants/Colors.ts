@@ -15,7 +15,9 @@ export const Colors = {
     tabIconDefault: '#e1e1e1',
     tabIconSelected: tintColorLight,
     highlightBackground: '#e0f7fa', // Light cyan as an example
-    buttonBg: tintColorLight
+    buttonBg: tintColorLight,
+    cardBg: "#fff",
+    buttonText: "#fff"
   },
   dark: {
     text: '#ECEDEE',
@@ -25,6 +27,8 @@ export const Colors = {
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
     highlightBackground: '#004d40',
-    buttonBg: tintColorLight
+    buttonBg: tintColorDark,
+    cardBg: "#212121",
+    buttonText: "#767676"
   },
 };

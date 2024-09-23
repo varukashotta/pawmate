@@ -14,7 +14,7 @@ const CategoryButton: FC<CategoryButtonProps> = ({ iconName, title, subtitle, de
     //
 
     return(
-        <TouchableOpacity onPress={() => categoryClicked(title)} style={styles.categoryButton}>
+        <TouchableOpacity onPress={() => categoryClicked(title)} style={[styles.categoryButton, {borderColor: Colors[colorScheme ?? "light"].tabIconDefault}]}>
             <ThemedView style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
                 <View>
                     <ThemedText fontWeight={"semiBold"} fontSize={"small"}  style={styles.categoryTitle}>{title}</ThemedText>
@@ -36,14 +36,12 @@ const styles = StyleSheet.create({
         borderRadius: responsiveSize(8),
         marginTop: responsiveSize(16),
         borderWidth: 1,
-        borderColor: "#e1e1e1",
         height: Dimensions.get("window").height / 7,
     },
     categoryTitle: {
         marginTop: responsiveSize(8),
     },
     categorySubtitle: {
-        color: '#666',
         marginBottom: responsiveSize(4)
     },
 })

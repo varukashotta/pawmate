@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
-import { Image, StyleSheet, Dimensions } from "react-native";
+import {Image, StyleSheet, Dimensions, View} from "react-native";
 import { responsiveSize } from "@/components/utils/resposive";
 import {useColorScheme} from "@/hooks/useColorScheme";
 import {Colors} from "@/constants/Colors";
@@ -22,14 +22,14 @@ const PetNewsCard: React.FC<PetNewsCardProps> = ({ image, title, author, date, t
     const colorScheme = useColorScheme();
 
     return (
-        <ThemedView style={[styles.petNewsCard, {borderColor: Colors[colorScheme ?? 'light'].tabIconDefault}]}>
-            <ThemedView style={styles.textContainer}>
+        <ThemedView style={[styles.petNewsCard, {borderColor: Colors[colorScheme ?? 'light'].tabIconDefault, backgroundColor: Colors[colorScheme ?? "light"].cardBg}]}>
+            <View style={[styles.textContainer]}>
                 <ThemedText fontWeight={"semiBold"} style={styles.petNewsTitle}>{title}</ThemedText>
-                <ThemedView style={styles.petNewsFooter}>
+                <View style={styles.petNewsFooter}>
                     <ThemedText fontSize={"mini"} style={styles.petNewsAuthor}>By {author}</ThemedText>
                     <ThemedText fontSize={"mini"} style={styles.petNewsDate}>{date} | {time}</ThemedText>
-                </ThemedView>
-            </ThemedView>
+                </View>
+            </View>
             <Image source={{ uri: image }} style={styles.petNewsImage} />
         </ThemedView>
     );

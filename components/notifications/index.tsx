@@ -3,20 +3,25 @@ import {ThemedText} from "@/components/ThemedText";
 import {Ionicons} from "@expo/vector-icons";
 import {responsiveSize} from "@/components/utils/resposive";
 import React, {FC} from "react";
+import {ThemedView} from "@/components/ThemedView";
+import {useColorScheme} from "@/hooks/useColorScheme";
+import {Colors} from "@/constants/Colors";
 
 interface INotification {
     setShowBookingAlert: (b: boolean) => void
 }
 
 const Notification: FC<INotification> = ({setShowBookingAlert}) => {
-    return (<View style={styles.bookingAlert}>
+    const colorSchem = useColorScheme();
+
+    return (<ThemedView style={[styles.bookingAlert, {backgroundColor: Colors[colorSchem ?? "light"].buttonBg}]}>
             <View style={styles.bookingAlertTextContainer}>
-                <ThemedText fontSize={"tiny"}  style={styles.bookingAlertText}>
+                <ThemedText fontSize={"tiny"}  style={[styles.bookingAlertText, {color: Colors[colorSchem ?? "light"].buttonText}]}>
                     No Upcoming Bookings -
                 </ThemedText>
                 <TouchableOpacity onPress={() => {/* Navigate to booking screen */
                 }}>
-                    <ThemedText fontSize={"tiny"} style={[styles.bookingAlertText, styles.bookingAlertLink]}>
+                    <ThemedText fontSize={"tiny"} style={[styles.bookingAlertText, styles.bookingAlertLink, {color: Colors[colorSchem ?? "light"].buttonText}]}>
                         {' '}
                         Book Now
                     </ThemedText>
@@ -25,7 +30,7 @@ const Notification: FC<INotification> = ({setShowBookingAlert}) => {
             <TouchableOpacity onPress={() => setShowBookingAlert(false)}>
                 <Ionicons name="close" size={responsiveSize(20)} color="#fff"/>
             </TouchableOpacity>
-        </View>
+        </ThemedView>
     )
 }
 
@@ -36,7 +41,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#ff385c', // Burgundy red
         padding: responsiveSize(8),
         borderRadius: 5,
         marginTop: responsiveSize(20),
