@@ -1,76 +1,15 @@
-import { Tabs } from 'expo-router';
 import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import {useColorScheme} from '@/hooks/useColorScheme';
+import {ThemedView} from "@/components/ThemedView";
+import {ThemedText} from "@/components/ThemedText";
+import {StatusBar} from "react-native";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+    const colorScheme = useColorScheme();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-          tabBarLabelStyle: {
-            fontSize: 11
-          }
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="schedule"
-        options={{
-          title: 'Schedule',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={color} />
-          ),
-        }}
-      />
-        <Tabs.Screen
-            name="community"
-            options={{
-                title: 'Community',
-                tabBarIcon: ({ color, focused }) => (
-                    <TabBarIcon name={focused ? 'storefront' : 'storefront-outline'} color={color} />
-                ),
-            }}
-        />
-        <Tabs.Screen
-            name="profile"
-            options={{
-                title: 'My Pets',
-                tabBarIcon: ({ color, focused }) => (
-                    <TabBarIcon name={focused ? 'paw' : 'paw-outline'} color={color} />
-                ),
-            }}
-        />
-        <Tabs.Screen
-            name="marketplace"
-            options={{
-                title: 'Marketplace',
-                tabBarIcon: ({ color, focused }) => (
-                    <TabBarIcon name={focused ? 'pricetag' : 'pricetag-outline'} color={color} />
-                ),
-            }}
-        />
-        <Tabs.Screen
-            name="settings"
-            options={{
-                title: 'Settings',
-                tabBarIcon: ({ color, focused }) => (
-                    <TabBarIcon name={focused ? 'options' : 'options-outline'} color={color} />
-                ),
-            }}
-        />
-    </Tabs>
-  );
+    return (<ThemedView style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+            <StatusBar hidden={true}/>
+            <ThemedText>Al.</ThemedText>
+        </ThemedView>
+    );
 }
